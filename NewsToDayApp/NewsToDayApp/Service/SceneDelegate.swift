@@ -16,8 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        
-        window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
+        window.rootViewController = BookmarksViewController()
+//        window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
         
         window.makeKeyAndVisible()
         
