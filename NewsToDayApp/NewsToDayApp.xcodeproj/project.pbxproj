@@ -18,6 +18,7 @@
 		31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A32CC55879008B4517 /* ProfileViewController.swift */; };
 		CE63BF9A2CC816BB000A82F5 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE63BF992CC816BB000A82F5 /* Config.plist */; };
 		CE63BF9C2CC8A120000A82F5 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */; };
+		CE76F96B2CC9FBCF0030365E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */; };
 		CEB31F472CC6A30300564766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F462CC6A2FD00564766 /* NetworkManager.swift */; };
 		CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F4B2CC6A33E00564766 /* Model.swift */; };
 		CEB31F4F2CC6A3EA00564766 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEB31F4E2CC6A3EA00564766 /* Alamofire */; };
@@ -39,6 +40,7 @@
 		31F988A32CC55879008B4517 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CE63BF992CC816BB000A82F5 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		CEB31F462CC6A2FD00564766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CEB31F4B2CC6A33E00564766 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = NewsToDayApp/Model.swift; sourceTree = SOURCE_ROOT; };
 		CEB31F562CC6A6B400564766 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		CEB31F582CC6A6BD00564766 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */,
 				CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */,
 				CEB31F562CC6A6B400564766 /* CustomCell.swift */,
 			);
@@ -214,6 +217,7 @@
 				CEB31F472CC6A30300564766 /* NetworkManager.swift in Sources */,
 				CEB31F572CC6A6B800564766 /* CustomCell.swift in Sources */,
 				31F9889E2CC55851008B4517 /* BrowseViewController.swift in Sources */,
+				CE76F96B2CC9FBCF0030365E /* EmptyStateView.swift in Sources */,
 				31F988862CC554D4008B4517 /* AppDelegate.swift in Sources */,
 				31F988882CC554D4008B4517 /* SceneDelegate.swift in Sources */,
 				CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */,

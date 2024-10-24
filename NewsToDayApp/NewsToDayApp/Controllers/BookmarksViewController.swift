@@ -20,6 +20,14 @@ class BookmarksViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var emptyStateView: EmptyStateView = {
+        let view = EmptyStateView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+    
+    
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +37,7 @@ class BookmarksViewController: UIViewController {
         
         setupNavBar()
         setupTableView()
+        setupEmptyStateView()
         setupConstraints()
         
     }
@@ -36,15 +45,27 @@ class BookmarksViewController: UIViewController {
     
     //MARK: - Private Methods
     
+    private func updateView() {
+        if article.isEmpty {
+            tableView.isHidden = true
+            emptyStateView.isHidden = false
+        } else {
+            tableView.isHidden = false
+            emptyStateView.isHidden = true
+            tableView.reloadData()        }
+    }
+    
+    
     private func fetchArticle() {
         networkManager.fetchAF { [unowned self] result in
             switch result {
             case .success(let article):
                 self.article = article
                 self.tableView.reloadData()
-                
+                self.updateView()
             case .failure(let error):
                 print(error.localizedDescription)
+                self.updateView()
             }
         }
     }
@@ -68,6 +89,10 @@ class BookmarksViewController: UIViewController {
         view.addSubview(tableView)
     }
     
+    private func setupEmptyStateView() {
+           view.addSubview(emptyStateView)
+       }
+    
     
     //MARK: - Setup Constraints
     
@@ -81,7 +106,12 @@ class BookmarksViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor, constant: 40),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            emptyStateView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            emptyStateView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
             
         ])
     }
