@@ -11,7 +11,7 @@ import Foundation
 struct K {
     static let appName = "NewsToDayApp"
     
-    struct Catagories {
+    struct Categories {
         
         static let sports = "🏈 Sports"
         static let politics = "⚖️ Politics"
