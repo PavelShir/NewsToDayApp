@@ -16,6 +16,7 @@
 		31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F9889F2CC5585E008B4517 /* CategoriesViewController.swift */; };
 		31F988A22CC5586A008B4517 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A12CC5586A008B4517 /* BookmarksViewController.swift */; };
 		31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A32CC55879008B4517 /* ProfileViewController.swift */; };
+		796397B72CC9FD4600556E23 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796397B62CC9FD4600556E23 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		31F9889F2CC5585E008B4517 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		31F988A12CC5586A008B4517 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		31F988A32CC55879008B4517 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		796397B62CC9FD4600556E23 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				31F988A62CC5595D008B4517 /* Controllers */,
 				31F988A72CC55970008B4517 /* Models */,
 				31F9888E2CC554D8008B4517 /* Assets.xcassets */,
+				796397B62CC9FD4600556E23 /* Constants.swift */,
 				31F988932CC554D8008B4517 /* Info.plist */,
 			);
 			path = NewsToDayApp;
@@ -177,6 +180,7 @@
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
 				31F9889A2CC5580C008B4517 /* OnboardingViewController.swift in Sources */,
+				796397B72CC9FD4600556E23 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
