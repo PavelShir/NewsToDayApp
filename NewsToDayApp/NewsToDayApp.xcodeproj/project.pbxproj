@@ -17,6 +17,8 @@
 		31F988A22CC5586A008B4517 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A12CC5586A008B4517 /* BookmarksViewController.swift */; };
 		31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A32CC55879008B4517 /* ProfileViewController.swift */; };
 		CE63BF9A2CC816BB000A82F5 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE63BF992CC816BB000A82F5 /* Config.plist */; };
+		CE63BF9C2CC8A120000A82F5 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */; };
+		CE63BF9E2CC8AD68000A82F5 /* BookMarksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63BF9D2CC8AD60000A82F5 /* BookMarksVC.swift */; };
 		CEB31F472CC6A30300564766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F462CC6A2FD00564766 /* NetworkManager.swift */; };
 		CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F4B2CC6A33E00564766 /* Model.swift */; };
 		CEB31F4F2CC6A3EA00564766 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEB31F4E2CC6A3EA00564766 /* Alamofire */; };
@@ -37,6 +39,8 @@
 		31F988A12CC5586A008B4517 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		31F988A32CC55879008B4517 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CE63BF992CC816BB000A82F5 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		CE63BF9D2CC8AD60000A82F5 /* BookMarksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarksVC.swift; sourceTree = "<group>"; };
 		CEB31F462CC6A2FD00564766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CEB31F4B2CC6A33E00564766 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = NewsToDayApp/Model.swift; sourceTree = SOURCE_ROOT; };
 		CEB31F562CC6A6B400564766 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 		31F988A62CC5595D008B4517 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE63BF9D2CC8AD60000A82F5 /* BookMarksVC.swift */,
 				31F988992CC5580C008B4517 /* OnboardingViewController.swift */,
 				31F9889B2CC5582B008B4517 /* TabBarViewController.swift */,
 				31F988A32CC55879008B4517 /* ProfileViewController.swift */,
@@ -127,6 +132,7 @@
 		CEB31F582CC6A6BD00564766 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */,
 				CEB31F562CC6A6B400564766 /* CustomCell.swift */,
 			);
 			path = CustomView;
@@ -206,6 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE63BF9C2CC8A120000A82F5 /* CustomNavigationBar.swift in Sources */,
+				CE63BF9E2CC8AD68000A82F5 /* BookMarksVC.swift in Sources */,
 				31F988A22CC5586A008B4517 /* BookmarksViewController.swift in Sources */,
 				CEB31F472CC6A30300564766 /* NetworkManager.swift in Sources */,
 				CEB31F572CC6A6B800564766 /* CustomCell.swift in Sources */,

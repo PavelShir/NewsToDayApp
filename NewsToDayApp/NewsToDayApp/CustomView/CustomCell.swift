@@ -16,10 +16,9 @@ final class CustomCell: UITableViewCell {
     
     private var customCellView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        //$0.frame.size = CGSize(width: 60, height: 44)
-        $0.heightAnchor.constraint(equalToConstant: 104).isActive = true
+        $0.heightAnchor.constraint(equalToConstant: 100).isActive = true
         $0.layer.cornerRadius = 12
-        $0.backgroundColor = .systemGray5
+        $0.backgroundColor = .clear
         return $0
     }(UIView())
     
@@ -40,7 +39,6 @@ final class CustomCell: UITableViewCell {
     private let labelStack: UIStackView = {
         let labelStack = UIStackView()
         labelStack.axis = .vertical
-        //labelStack.alignment = .fill
         labelStack.spacing = 8
         labelStack.distribution = .equalSpacing
         labelStack.translatesAutoresizingMaskIntoConstraints = false
@@ -103,13 +101,13 @@ final class CustomCell: UITableViewCell {
         
         customCellCaption.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            customCellView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            customCellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            customCellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            customCellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            customCellView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            customCellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            customCellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
+            customCellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
             
-            customCellImage.topAnchor.constraint(equalTo: customCellView.topAnchor, constant: 8),
-            customCellImage.leadingAnchor.constraint(equalTo: customCellView.leadingAnchor, constant: 8),
+            customCellImage.topAnchor.constraint(equalTo: customCellView.topAnchor),
+            customCellImage.leadingAnchor.constraint(equalTo: customCellView.leadingAnchor),
             
             customCellCaption.topAnchor.constraint(equalTo: customCellView.topAnchor, constant: 8),
             customCellCaption.leadingAnchor.constraint(equalTo: customCellImage.trailingAnchor, constant: 16),
@@ -118,12 +116,6 @@ final class CustomCell: UITableViewCell {
             customCellTitle.topAnchor.constraint(equalTo: customCellCaption.bottomAnchor, constant: 12),
             customCellTitle.leadingAnchor.constraint(equalTo: customCellImage.trailingAnchor, constant: 16),
             customCellTitle.trailingAnchor.constraint(equalTo: customCellView.trailingAnchor, constant: -12),
-            
-            
-//            labelStack.topAnchor.constraint(equalTo: customCellView.topAnchor, constant: 8),
-//            labelStack.leadingAnchor.constraint(equalTo: customCellImage.trailingAnchor, constant: 12),
-//            labelStack.trailingAnchor.constraint(equalTo: customCellView.trailingAnchor, constant: -12),
-//            labelStack.bottomAnchor.constraint(lessThanOrEqualTo: customCellView.bottomAnchor, constant: -8)
             
             
         ])

@@ -1,14 +1,13 @@
 //
-//  BookmarksViewController.swift
+//  BookMarksVC.swift
 //  NewsToDayApp
 //
-//  Created by Павел Широкий on 20.10.2024.
+//  Created by user on 23.10.2024.
 //
 
 import UIKit
 
-class BookmarksViewController: UIViewController {
-    
+class BookMarksVC: UIViewController {
     
     private var article: [Article] = []
     private let networkManager = NetworkService.shared
@@ -20,7 +19,7 @@ class BookmarksViewController: UIViewController {
         return tableView
     }()
     
-    //MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -51,8 +50,7 @@ class BookmarksViewController: UIViewController {
     
     //MARK: - Setup UI
     private func setupNavBar() {
-        navigationBar.titleOfLabel.text = "Bookmarks"
-        navigationBar.subTitleLabel.text = "Saved articles to the library"
+        navigationBar.titleOfLabel.text = "Name Screen"
         navigationBar.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(navigationBar)
         view.addSubview(navigationBar.view)
@@ -78,9 +76,9 @@ class BookmarksViewController: UIViewController {
             navigationBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.view.heightAnchor.constraint(equalToConstant: 50),
             
-            tableView.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor, constant: 40),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            tableView.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             
         ])
@@ -89,7 +87,7 @@ class BookmarksViewController: UIViewController {
 
 //MARK: - UITableViewDataSource, UITableViewDelegate
 
-extension BookmarksViewController: UITableViewDataSource, UITableViewDelegate {
+extension BookMarksVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return article.count
     }
@@ -102,4 +100,3 @@ extension BookmarksViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
 }
-
