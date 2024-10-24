@@ -17,6 +17,7 @@
 		31F988A22CC5586A008B4517 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A12CC5586A008B4517 /* BookmarksViewController.swift */; };
 		31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A32CC55879008B4517 /* ProfileViewController.swift */; };
 		796397B72CC9FD4600556E23 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796397B62CC9FD4600556E23 /* Constants.swift */; };
+		796397BA2CCA9A8500556E23 /* Preview + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796397B92CCA9A8500556E23 /* Preview + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		31F988A12CC5586A008B4517 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		31F988A32CC55879008B4517 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		796397B62CC9FD4600556E23 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		796397B92CCA9A8500556E23 /* Preview + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		31F988842CC554D4008B4517 /* NewsToDayApp */ = {
 			isa = PBXGroup;
 			children = (
+				796397B82CCA9A5200556E23 /* Extensions */,
 				31F988A52CC55949008B4517 /* Service */,
 				31F988A62CC5595D008B4517 /* Controllers */,
 				31F988A72CC55970008B4517 /* Models */,
@@ -101,6 +104,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		796397B82CCA9A5200556E23 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				796397B92CCA9A8500556E23 /* Preview + Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +191,7 @@
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
 				31F9889A2CC5580C008B4517 /* OnboardingViewController.swift in Sources */,
+				796397BA2CCA9A8500556E23 /* Preview + Extension.swift in Sources */,
 				796397B72CC9FD4600556E23 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
