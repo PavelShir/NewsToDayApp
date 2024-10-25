@@ -86,8 +86,8 @@ class CategoriesViewController: UIViewController {
     
     func setView(){
         
-        
-        /*labelTitle.text = "Categories"*/
+        view.backgroundColor = .white
+        labelTitle.text = "Categories"
         labelTitleDescription.text = "Thousands of articles in each category"
         mainStack.addArrangedSubview(labelTitle)
         mainStack.addArrangedSubview(labelTitleDescription)
@@ -182,10 +182,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
 }
 
-struct ViewControllerProvider: PreviewProvider {
-    static var previews: some View {
-        CategoriesViewController().showPreview()
-    }
-}
+//struct ViewControllerProvider: PreviewProvider {
+//    static var previews: some View {
+//        CategoriesViewController().showPreview()
+//    }
+//}
 
 
