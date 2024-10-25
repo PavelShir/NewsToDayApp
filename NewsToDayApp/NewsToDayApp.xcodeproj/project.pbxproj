@@ -16,13 +16,13 @@
 		31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F9889F2CC5585E008B4517 /* CategoriesViewController.swift */; };
 		31F988A22CC5586A008B4517 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A12CC5586A008B4517 /* BookmarksViewController.swift */; };
 		31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A32CC55879008B4517 /* ProfileViewController.swift */; };
-		CE63BF9A2CC816BB000A82F5 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE63BF992CC816BB000A82F5 /* Config.plist */; };
+		796397BD2CCB58A700556E23 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 796397BC2CCB58A700556E23 /* Config.plist */; };
+		796530762CCB6EAE00FF3C5B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 796530752CCB6EAE00FF3C5B /* Alamofire */; };
+		796530782CCB6EB300FF3C5B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 796530772CCB6EB300FF3C5B /* Kingfisher */; };
 		CE63BF9C2CC8A120000A82F5 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */; };
 		CE76F96B2CC9FBCF0030365E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */; };
 		CEB31F472CC6A30300564766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F462CC6A2FD00564766 /* NetworkManager.swift */; };
 		CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F4B2CC6A33E00564766 /* Model.swift */; };
-		CEB31F4F2CC6A3EA00564766 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEB31F4E2CC6A3EA00564766 /* Alamofire */; };
-		CEB31F522CC6A44700564766 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEB31F512CC6A44700564766 /* Kingfisher */; };
 		CEB31F572CC6A6B800564766 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F562CC6A6B400564766 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,7 @@
 		31F9889F2CC5585E008B4517 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		31F988A12CC5586A008B4517 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		31F988A32CC55879008B4517 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		CE63BF992CC816BB000A82F5 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		796397BC2CCB58A700556E23 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		CEB31F462CC6A2FD00564766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -51,8 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB31F522CC6A44700564766 /* Kingfisher in Frameworks */,
-				CEB31F4F2CC6A3EA00564766 /* Alamofire in Frameworks */,
+				796530782CCB6EB300FF3C5B /* Kingfisher in Frameworks */,
+				796530762CCB6EAE00FF3C5B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +64,7 @@
 			children = (
 				31F988842CC554D4008B4517 /* NewsToDayApp */,
 				31F988832CC554D4008B4517 /* Products */,
+				796530742CCB6EAE00FF3C5B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,10 +83,10 @@
 				CEB31F482CC6A30A00564766 /* NetworkManager */,
 				31F988A52CC55949008B4517 /* Service */,
 				31F988A62CC5595D008B4517 /* Controllers */,
-				31F988A72CC55970008B4517 /* Models */,
 				31F9888E2CC554D8008B4517 /* Assets.xcassets */,
+				CEB31F4B2CC6A33E00564766 /* Model.swift */,
 				31F988932CC554D8008B4517 /* Info.plist */,
-				CE63BF992CC816BB000A82F5 /* Config.plist */,
+				796397BC2CCB58A700556E23 /* Config.plist */,
 			);
 			path = NewsToDayApp;
 			sourceTree = "<group>";
@@ -112,12 +113,11 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		31F988A72CC55970008B4517 /* Models */ = {
+		796530742CCB6EAE00FF3C5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CEB31F4B2CC6A33E00564766 /* Model.swift */,
 			);
-			path = Models;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CEB31F482CC6A30A00564766 /* NetworkManager */ = {
@@ -154,6 +154,10 @@
 			dependencies = (
 			);
 			name = NewsToDayApp;
+			packageProductDependencies = (
+				796530752CCB6EAE00FF3C5B /* Alamofire */,
+				796530772CCB6EB300FF3C5B /* Kingfisher */,
+			);
 			productName = NewsToDayApp;
 			productReference = 31F988822CC554D4008B4517 /* NewsToDayApp.app */;
 			productType = "com.apple.product-type.application";
@@ -183,8 +187,8 @@
 			);
 			mainGroup = 31F988792CC554D4008B4517;
 			packageReferences = (
-				CEB31F4D2CC6A3EA00564766 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				CEB31F502CC6A44700564766 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				797DE6322CCB61170014E8F3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				797DE6332CCB61780014E8F3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 31F988832CC554D4008B4517 /* Products */;
 			projectDirPath = "";
@@ -200,7 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE63BF9A2CC816BB000A82F5 /* Config.plist in Resources */,
+				796397BD2CCB58A700556E23 /* Config.plist in Resources */,
 				31F9888F2CC554D8008B4517 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,33 +442,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CEB31F4D2CC6A3EA00564766 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		797DE6322CCB61170014E8F3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.1;
+				kind = exactVersion;
+				version = 5.10.1;
 			};
 		};
-		CEB31F502CC6A44700564766 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		797DE6332CCB61780014E8F3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.1.0;
+				kind = exactVersion;
+				version = 8.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CEB31F4E2CC6A3EA00564766 /* Alamofire */ = {
+		796530752CCB6EAE00FF3C5B /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CEB31F4D2CC6A3EA00564766 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 797DE6322CCB61170014E8F3 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		CEB31F512CC6A44700564766 /* Kingfisher */ = {
+		796530772CCB6EB300FF3C5B /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CEB31F502CC6A44700564766 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 797DE6332CCB61780014E8F3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
