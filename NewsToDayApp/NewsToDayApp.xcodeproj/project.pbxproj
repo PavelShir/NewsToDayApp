@@ -19,6 +19,7 @@
 		796397BD2CCB58A700556E23 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 796397BC2CCB58A700556E23 /* Config.plist */; };
 		796530762CCB6EAE00FF3C5B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 796530752CCB6EAE00FF3C5B /* Alamofire */; };
 		796530782CCB6EB300FF3C5B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 796530772CCB6EB300FF3C5B /* Kingfisher */; };
+		7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796530792CCB904A00FF3C5B /* Constants.swift */; };
 		CE63BF9C2CC8A120000A82F5 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */; };
 		CE76F96B2CC9FBCF0030365E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */; };
 		CEB31F472CC6A30300564766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F462CC6A2FD00564766 /* NetworkManager.swift */; };
@@ -39,6 +40,7 @@
 		31F988A12CC5586A008B4517 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		31F988A32CC55879008B4517 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		796397BC2CCB58A700556E23 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		796530792CCB904A00FF3C5B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		CEB31F462CC6A2FD00564766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				31F988A62CC5595D008B4517 /* Controllers */,
 				31F9888E2CC554D8008B4517 /* Assets.xcassets */,
 				CEB31F4B2CC6A33E00564766 /* Model.swift */,
+				796530792CCB904A00FF3C5B /* Constants.swift */,
 				31F988932CC554D8008B4517 /* Info.plist */,
 				796397BC2CCB58A700556E23 /* Config.plist */,
 			);
@@ -227,6 +230,7 @@
 				CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */,
 				31F9889C2CC5582B008B4517 /* TabBarViewController.swift in Sources */,
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
+				7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */,
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
 				31F9889A2CC5580C008B4517 /* OnboardingViewController.swift in Sources */,
 			);
