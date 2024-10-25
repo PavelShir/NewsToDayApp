@@ -16,7 +16,7 @@ final class OnboardingViewController: UIViewController {
         didSet {
             let isLastPage = models.count - 1 > selectedIndex
             nextButton.setTitle(
-                isLastPage ? "Next" : "Get Started",
+                isLastPage ? K.Onboarding.titleNext : K.Onboarding.titleGetStarted,
                 for: .normal
             )
         }
@@ -48,7 +48,11 @@ final class OnboardingViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.systemFont(
+            ofSize: K.Onboarding.fontSizeTitleLabel,
+            weight: .bold
+        )
+        label.textColor = .brandBlackPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -56,19 +60,25 @@ final class OnboardingViewController: UIViewController {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.font = UIFont.systemFont(
+            ofSize: K.Onboarding.fontSizeDescriptionLabel,
+            weight: .bold
+        )
         label.numberOfLines = 0
-        label.textColor = .lightGray
+        label.textColor = .brandGreyPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font = UIFont.systemFont(
+            ofSize: K.Onboarding.fontSizeNextButton,
+            weight: .bold
+        )
         button.tintColor = .white
-        button.backgroundColor = .systemIndigo
-        button.layer.cornerRadius = 10
+        button.backgroundColor = .brandPurplePrimary
+        button.layer.cornerRadius = K.Onboarding.cornerRadiusNextButton
         button.addAction(
             UIAction { _ in self.handleNextButtonTapped() },
             for: .touchUpInside
@@ -110,8 +120,8 @@ final class OnboardingViewController: UIViewController {
     private func setupLayout() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: 76
+                equalTo: view.topAnchor,
+                constant: K.Onboarding.topMarginCollectionView
             ),
             collectionView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor
@@ -120,11 +130,11 @@ final class OnboardingViewController: UIViewController {
                 equalTo: view.trailingAnchor
             ),
             collectionView.heightAnchor.constraint(
-                equalToConstant: .init(336)
+                equalToConstant: K.Onboarding.heightCollectionView
             ),
             pageControl.topAnchor.constraint(
                 equalTo: collectionView.bottomAnchor,
-                constant: 40
+                constant: K.Onboarding.topMarginPageControl
             ),
             pageControl.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor
@@ -134,7 +144,7 @@ final class OnboardingViewController: UIViewController {
             ),
             titleLabel.topAnchor.constraint(
                 equalTo: pageControl.bottomAnchor,
-                constant: 34
+                constant: K.Onboarding.topMarginTitleLabel
             ),
             titleLabel.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor
@@ -144,34 +154,34 @@ final class OnboardingViewController: UIViewController {
             ),
             descriptionLabel.topAnchor.constraint(
                 equalTo: titleLabel.bottomAnchor,
-                constant: 34
+                constant: K.Onboarding.topMarginDescriptionLabel
             ),
             descriptionLabel.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: 100
+                constant: K.Onboarding.horizontalMarginDescriptionLabel
             ),
             descriptionLabel.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -100
+                constant: -K.Onboarding.horizontalMarginDescriptionLabel
             ),
             nextButton.topAnchor.constraint(
                 equalTo: descriptionLabel.bottomAnchor,
-                constant: 64
+                constant: K.Onboarding.topMarginNextButton
             ),
             nextButton.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: 20
+                constant: K.Onboarding.horizontalMarginNextButton
             ),
             nextButton.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -20
+                constant: -K.Onboarding.horizontalMarginNextButton
             ),
             nextButton.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor,
-                constant: -50
+                constant: -K.Onboarding.bottomMarginNextButton
             ),
             nextButton.heightAnchor.constraint(
-                equalToConstant: .init(50)
+                equalToConstant: K.Onboarding.heightNextButton
             )
         ])
     }
@@ -196,6 +206,8 @@ final class OnboardingViewController: UIViewController {
             selectedIndex += 1
             pageControl.currentPage += 1
             updateLabels(for: selectedIndex)
+        } else {
+            //TODO: get started app
         }
     }
 }

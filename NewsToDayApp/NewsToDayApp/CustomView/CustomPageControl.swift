@@ -33,7 +33,7 @@ final class CustomAnimatedPageControl: UIView {
 
         for i in 0..<numberOfPages {
             let dotView = UIView()
-            dotView.backgroundColor = i == currentPage ? .systemIndigo : .systemGray4
+            dotView.backgroundColor = i == currentPage ? .brandPurplePrimary : .brandGreyLight
             dotView.layer.cornerRadius = dotSize / 2
             dotView.translatesAutoresizingMaskIntoConstraints = false
 
