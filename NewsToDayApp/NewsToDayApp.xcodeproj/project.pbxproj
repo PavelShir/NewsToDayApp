@@ -261,6 +261,7 @@
 				CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */,
 				31F9889C2CC5582B008B4517 /* TabBarViewController.swift in Sources */,
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
+				0F11F3E92CCBCA2D009DD9B7 /* OnboardingModel.swift in Sources */,
 				7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */,
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
 				31F9889A2CC5580C008B4517 /* OnboardingViewController.swift in Sources */,
