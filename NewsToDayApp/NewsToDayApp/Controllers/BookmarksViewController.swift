@@ -90,8 +90,8 @@ class BookmarksViewController: UIViewController {
     }
     
     private func setupEmptyStateView() {
-           view.addSubview(emptyStateView)
-       }
+        view.addSubview(emptyStateView)
+    }
     
     
     //MARK: - Setup Constraints
@@ -122,6 +122,7 @@ class BookmarksViewController: UIViewController {
 extension BookmarksViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return article.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -130,6 +131,8 @@ extension BookmarksViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setupCell(article: arts )
         return cell
     }
-    
+    //MARK: - Article
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(ArticleViewController(article: article[indexPath.row]), animated: true)
+    }
 }
-

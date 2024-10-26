@@ -4,6 +4,8 @@
 
 ## User settings
 xcuserdata/
+*.xcuserstate
+
 
 Config.plist
 
@@ -29,6 +31,7 @@ DerivedData/
 *.hmap
 
 ## App packaging
+*.DS_Store
 *.ipa
 *.dSYM.zip
 *.dSYM

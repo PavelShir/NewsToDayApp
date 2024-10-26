@@ -116,8 +116,6 @@ final class CustomCell: UITableViewCell {
             customCellTitle.topAnchor.constraint(equalTo: customCellCaption.bottomAnchor, constant: 12),
             customCellTitle.leadingAnchor.constraint(equalTo: customCellImage.trailingAnchor, constant: 16),
             customCellTitle.trailingAnchor.constraint(equalTo: customCellView.trailingAnchor, constant: -12),
-            
-            
         ])
     }
     
