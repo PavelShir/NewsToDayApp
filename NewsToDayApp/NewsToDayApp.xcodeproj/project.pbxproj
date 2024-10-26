@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F11F4122CD108A4009DD9B7 /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4102CD108A4009DD9B7 /* CustomPageControl.swift */; };
+		0F11F4132CD108A4009DD9B7 /* OnboardingVewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4112CD108A4009DD9B7 /* OnboardingVewCell.swift */; };
+		0F11F4152CD108D5009DD9B7 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4142CD108D5009DD9B7 /* OnboardingModel.swift */; };
 		0F838FD42CC8F5600028D301 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F838FD32CC8F5410028D301 /* ArticleViewController.swift */; };
 		0F838FD92CC8F76A0028D301 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F838FD82CC8F7640028D301 /* ArticleView.swift */; };
 		0F8390432CC95C500028D301 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F8390422CC95C500028D301 /* Config.plist */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F11F4102CD108A4009DD9B7 /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
+		0F11F4112CD108A4009DD9B7 /* OnboardingVewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVewCell.swift; sourceTree = "<group>"; };
+		0F11F4142CD108D5009DD9B7 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		0F838FD32CC8F5410028D301 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		0F838FD82CC8F7640028D301 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		0F8390422CC95C500028D301 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
@@ -81,6 +87,7 @@
 		0F8390442CC97EE80028D301 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0F11F4142CD108D5009DD9B7 /* OnboardingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -161,6 +168,8 @@
 		CEB31F582CC6A6BD00564766 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				0F11F4102CD108A4009DD9B7 /* CustomPageControl.swift */,
+				0F11F4112CD108A4009DD9B7 /* OnboardingVewCell.swift */,
 				CE76F9BB2CCBAF850030365E /* SearchBar.swift */,
 				CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */,
 				CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */,
@@ -258,10 +267,12 @@
 				31F988862CC554D4008B4517 /* AppDelegate.swift in Sources */,
 				CE76F9BC2CCBAF8A0030365E /* SearchBar.swift in Sources */,
 				31F988882CC554D4008B4517 /* SceneDelegate.swift in Sources */,
+				0F11F4152CD108D5009DD9B7 /* OnboardingModel.swift in Sources */,
 				CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */,
 				31F9889C2CC5582B008B4517 /* TabBarViewController.swift in Sources */,
+				0F11F4122CD108A4009DD9B7 /* CustomPageControl.swift in Sources */,
+				0F11F4132CD108A4009DD9B7 /* OnboardingVewCell.swift in Sources */,
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
-				0F11F3E92CCBCA2D009DD9B7 /* OnboardingModel.swift in Sources */,
 				7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */,
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
 				31F9889A2CC5580C008B4517 /* OnboardingViewController.swift in Sources */,

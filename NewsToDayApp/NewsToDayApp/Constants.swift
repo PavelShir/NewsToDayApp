@@ -47,16 +47,16 @@ struct K {
         static var topMarginCollectionView: CGFloat { K.screenHeight * (120 / 812) }
         static var heightCollectionView: CGFloat { K.screenHeight * (336 / 812) }
         static var topMarginPageControl: CGFloat { K.screenHeight * (40 / 812) }
-        static var topMarginTitleLabel: CGFloat { K.screenHeight * (34 / 812) }
+        static var topMarginStackView: CGFloat { K.screenHeight * (34 / 812) }
+        static var horizontalMarginStackView: CGFloat { K.screenWidth * (80 / 375) }
+        static var spacingStackView: CGFloat { K.screenWidth * (24 / 375) }
         static var fontSizeTitleLabel: CGFloat { K.screenWidth * (24 / 375) }
-        static var topMarginDescriptionLabel: CGFloat { K.screenHeight * (24 / 812) }
         static var fontSizeDescriptionLabel: CGFloat { K.screenWidth * (16 / 375) }
-        static var horizontalMarginDescriptionLabel: CGFloat { K.screenWidth * (80 / 375) }
         static var topMarginNextButton: CGFloat { K.screenHeight * ( 64 / 812) }
         static var horizontalMarginNextButton: CGFloat { K.screenWidth * (20 / 375) }
-        static var bottomMarginNextButton: CGFloat { K.screenHeight * ( 50 / 812) }
         static var heightNextButton: CGFloat { K.screenHeight * ( 56 / 812) }
         static var cornerRadiusNextButton: CGFloat { K.screenHeight * ( 12 / 812) }
         static var fontSizeNextButton: CGFloat { K.screenWidth * (16 / 375) }
+        static var cornerRadiusImage: CGFloat { K.screenHeight * ( 12 / 812) }
     }
 }

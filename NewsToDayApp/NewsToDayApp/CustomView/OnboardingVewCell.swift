@@ -17,7 +17,9 @@ final class OnboardingViewCell: UICollectionViewCell {
 
     private let imageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleToFill
+        view.clipsToBounds = true
+        view.layer.cornerRadius = K.Onboarding.cornerRadiusImage
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

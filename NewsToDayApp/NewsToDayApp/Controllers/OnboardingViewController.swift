@@ -27,7 +27,11 @@ final class OnboardingViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 27
+        layout.minimumInteritemSpacing = 27
+        layout.sectionInset = .init(top: 0, left: 44, bottom: 0, right: 44)
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.decelerationRate = .fast
         view.showsHorizontalScrollIndicator = false
         view.dataSource = self
         view.delegate = self
@@ -45,6 +49,15 @@ final class OnboardingViewController: UIViewController {
         return page
     }()
 
+    private let stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = K.Onboarding.spacingStackView
+        stack.distribution = .fillEqually
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -53,7 +66,6 @@ final class OnboardingViewController: UIViewController {
             weight: .bold
         )
         label.textColor = .brandBlackPrimary
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -62,11 +74,10 @@ final class OnboardingViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont.systemFont(
             ofSize: K.Onboarding.fontSizeDescriptionLabel,
-            weight: .bold
+            weight: .regular
         )
         label.numberOfLines = 0
         label.textColor = .brandGreyPrimary
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -107,14 +118,8 @@ final class OnboardingViewController: UIViewController {
     }
 
     private func setupHierarchy() {
-        [
-            collectionView,
-            pageControl,
-            titleLabel,
-            descriptionLabel,
-            nextButton
-        ]
-            .forEach { view.addSubview($0) }
+        [collectionView, pageControl, stackView, nextButton].forEach { view.addSubview($0) }
+        [titleLabel, descriptionLabel].forEach { stackView.addArrangedSubview($0) }
     }
 
     private func setupLayout() {
@@ -142,30 +147,20 @@ final class OnboardingViewController: UIViewController {
             pageControl.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor
             ),
-            titleLabel.topAnchor.constraint(
+            stackView.topAnchor.constraint(
                 equalTo: pageControl.bottomAnchor,
-                constant: K.Onboarding.topMarginTitleLabel
+                constant: K.Onboarding.topMarginStackView
             ),
-            titleLabel.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor
-            ),
-            titleLabel.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor
-            ),
-            descriptionLabel.topAnchor.constraint(
-                equalTo: titleLabel.bottomAnchor,
-                constant: K.Onboarding.topMarginDescriptionLabel
-            ),
-            descriptionLabel.leadingAnchor.constraint(
+            stackView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: K.Onboarding.horizontalMarginDescriptionLabel
+                constant: K.Onboarding.horizontalMarginStackView
             ),
-            descriptionLabel.trailingAnchor.constraint(
+            stackView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -K.Onboarding.horizontalMarginDescriptionLabel
+                constant: -K.Onboarding.horizontalMarginStackView
             ),
             nextButton.topAnchor.constraint(
-                equalTo: descriptionLabel.bottomAnchor,
+                equalTo: stackView.bottomAnchor,
                 constant: K.Onboarding.topMarginNextButton
             ),
             nextButton.leadingAnchor.constraint(
@@ -176,17 +171,17 @@ final class OnboardingViewController: UIViewController {
                 equalTo: view.trailingAnchor,
                 constant: -K.Onboarding.horizontalMarginNextButton
             ),
-            nextButton.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor,
-                constant: -K.Onboarding.bottomMarginNextButton
-            ),
+//            nextButton.bottomAnchor.constraint(
+//                equalTo: view.bottomAnchor,
+//                constant: -K.Onboarding.bottomMarginNextButton
+//            ),
             nextButton.heightAnchor.constraint(
                 equalToConstant: K.Onboarding.heightNextButton
             )
         ])
     }
 
-     // MARK: - Helper methods
+    // MARK: - Helper methods
 
     private func updateLabels(for index: Int) {
         guard index < models.count else { return }
@@ -206,6 +201,9 @@ final class OnboardingViewController: UIViewController {
             selectedIndex += 1
             pageControl.currentPage += 1
             updateLabels(for: selectedIndex)
+            UIView.animate(withDuration: 0.3) {
+                self.collectionView.collectionViewLayout.invalidateLayout()
+            }
         } else {
             //TODO: get started app
         }
@@ -245,17 +243,51 @@ extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(
-            width: collectionView.frame.width,
-            height: collectionView.frame.height
-        )
+        if selectedIndex == indexPath.item {
+            CGSize(
+                width: collectionView.frame.width * 0.8,
+                height: collectionView.frame.height
+            )
+        } else {
+            CGSize(
+                width: collectionView.frame.width * 0.8,
+                height: collectionView.frame.height * 0.85
+            )
+        }
+    }
+
+    func scrollViewDidEndDragging(
+        _ scrollView: UIScrollView,
+        willDecelerate decelerate: Bool
+    ) {
+        if !decelerate {
+            centerCurrentPage(scrollView: scrollView)
+        }
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let newIndexOfPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
-        pageControl.currentPage = newIndexOfPage
-        selectedIndex = newIndexOfPage
-        updateLabels(for: selectedIndex)
+        centerCurrentPage(scrollView: scrollView)
+    }
+
+    private func centerCurrentPage(scrollView: UIScrollView) {
+        let centerX = scrollView.contentOffset.x + scrollView.bounds.size.width / 2
+        let closestIndexPath = collectionView.indexPathForItem(
+            at: CGPoint(x: centerX, y: scrollView.bounds.size.height / 2)
+        )
+
+        if let indexPath = closestIndexPath {
+            collectionView.scrollToItem(
+                at: indexPath,
+                at: .centeredHorizontally,
+                animated: true
+            )
+            selectedIndex = indexPath.item
+            pageControl.currentPage = selectedIndex
+            updateLabels(for: selectedIndex)
+            UIView.animate(withDuration: 0.3) {
+                self.collectionView.collectionViewLayout.invalidateLayout()
+            }
+        }
     }
 }
 
