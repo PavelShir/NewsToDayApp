@@ -83,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F11F4012CCE50CA009DD9B7 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				0F11F4022CCE50E3009DD9B7 /* LoginViewController.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
 		0F838FD52CC8F6410028D301 /* Article */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +296,7 @@
 				0F11F4132CD108A4009DD9B7 /* OnboardingVewCell.swift in Sources */,
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
 				7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */,
+				0F11F4032CCE512B009DD9B7 /* LoginViewController.swift in Sources */,
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
 				31F9889A2CC5580C008B4517 /* OnboardingViewController.swift in Sources */,
 				0F838FD92CC8F76A0028D301 /* ArticleView.swift in Sources */,
