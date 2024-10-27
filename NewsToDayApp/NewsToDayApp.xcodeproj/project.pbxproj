@@ -86,6 +86,7 @@
 		0F11F4012CCE50CA009DD9B7 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				0F11F4042CCE590C009DD9B7 /* RegistrationViewController.swift */,
 				0F11F4022CCE50E3009DD9B7 /* LoginViewController.swift */,
 			);
 			path = Authorization;
@@ -295,6 +296,7 @@
 				0F11F4122CD108A4009DD9B7 /* CustomPageControl.swift in Sources */,
 				0F11F4132CD108A4009DD9B7 /* OnboardingVewCell.swift in Sources */,
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
+				0F11F4052CCE590E009DD9B7 /* RegistrationViewController.swift in Sources */,
 				7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */,
 				0F11F4032CCE512B009DD9B7 /* LoginViewController.swift in Sources */,
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
