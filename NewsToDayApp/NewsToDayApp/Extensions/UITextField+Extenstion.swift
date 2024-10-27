@@ -18,7 +18,7 @@ extension UITextField {
         iconView.image = image.withRenderingMode(.alwaysTemplate)
         iconView.tintColor = IconColors.defaultColor
 
-        let iconContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 48, height: 24))
+        let iconContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 24))
         iconContainerView.addSubview(iconView)
 
         leftView = iconContainerView

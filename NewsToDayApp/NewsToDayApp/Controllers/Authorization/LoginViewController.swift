@@ -32,7 +32,7 @@ final class LoginViewController: UIViewController {
 
     private let emailTextField: UITextField = {
         let textField = UITextField()
-        let envelopeIcon = UIImage(systemName: "envelope")!
+        let envelopeIcon: UIImage = .iconEnvelope
         textField.setLeftIcon(envelopeIcon)
         textField.setPlaceholder(text: "Email Adress", color: .brandGreyPrimary)
         textField.textAlignment = .left
@@ -46,7 +46,7 @@ final class LoginViewController: UIViewController {
 
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
-        let lockIcon = UIImage(systemName: "lock")!
+        let lockIcon: UIImage = .iconLock
         textField.setLeftIcon(lockIcon)
         textField.setPlaceholder(text: "Password", color: .brandGreyPrimary)
         textField.textAlignment = .left

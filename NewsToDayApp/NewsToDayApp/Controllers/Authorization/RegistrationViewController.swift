@@ -32,8 +32,8 @@ final class RegistrationViewController: UIViewController {
 
     private let usernameTextField: UITextField = {
         let textField = UITextField()
-        let envelopeIcon = UIImage(systemName: "person")!
-        textField.setLeftIcon(envelopeIcon)
+        let userIcon: UIImage = .iconUser
+        textField.setLeftIcon(userIcon)
         textField.setPlaceholder(text: "Username", color: .brandGreyPrimary)
         textField.textAlignment = .left
         textField.textColor = .brandBlackPrimary
@@ -46,7 +46,7 @@ final class RegistrationViewController: UIViewController {
 
     private let emailTextField: UITextField = {
         let textField = UITextField()
-        let envelopeIcon = UIImage(systemName: "envelope")!
+        let envelopeIcon: UIImage = .iconEnvelope
         textField.setLeftIcon(envelopeIcon)
         textField.setPlaceholder(text: "Email Adress", color: .brandGreyPrimary)
         textField.textAlignment = .left
@@ -60,8 +60,8 @@ final class RegistrationViewController: UIViewController {
 
     private let passwordTextField: UITextField = {
         let textField = UITextField()
-        let envelopeIcon = UIImage(systemName: "lock")!
-        textField.setLeftIcon(envelopeIcon)
+        let lockIcon: UIImage = .iconLock
+        textField.setLeftIcon(lockIcon)
         textField.setPlaceholder(text: "Password", color: .brandGreyPrimary)
         textField.textAlignment = .left
         textField.textColor = .brandBlackPrimary
@@ -75,8 +75,8 @@ final class RegistrationViewController: UIViewController {
 
     private let repeatPasswordTextField: UITextField = {
         let textField = UITextField()
-        let envelopeIcon = UIImage(systemName: "lock")!
-        textField.setLeftIcon(envelopeIcon)
+        let lockIcon: UIImage = .iconLock
+        textField.setLeftIcon(lockIcon)
         textField.setPlaceholder(text: "Repeat Password", color: .brandGreyPrimary)
         textField.textAlignment = .left
         textField.textColor = .brandBlackPrimary
