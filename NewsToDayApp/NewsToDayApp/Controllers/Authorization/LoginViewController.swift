@@ -32,22 +32,42 @@ final class LoginViewController: UIViewController {
 
     private let emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Email Adress"
-        textField.font = .preferredFont(forTextStyle: .body)
+        let envelopeIcon = UIImage(systemName: "envelope")!
+        textField.setLeftIcon(envelopeIcon)
+        textField.setPlaceholder(text: "Email Adress", color: .brandGreyPrimary)
+        textField.textAlignment = .left
+        textField.textColor = .brandBlackPrimary
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textField.layer.cornerRadius = 12
         textField.backgroundColor = .brandGreyLighter
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
-    private let passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Password"
-        textField.font = .preferredFont(forTextStyle: .body)
+        let lockIcon = UIImage(systemName: "lock")!
+        textField.setLeftIcon(lockIcon)
+        textField.setPlaceholder(text: "Password", color: .brandGreyPrimary)
+        textField.textAlignment = .left
+        textField.textColor = .brandBlackPrimary
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textField.layer.cornerRadius = 12
         textField.backgroundColor = .brandGreyLighter
+        textField.isSecureTextEntry = true
+        textField.addAction(UIAction { _ in self.setupPasswordObservers() }, for: .editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
+    }()
+
+    private lazy var togglePasswordButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        button.tintColor = .brandPurplePrimary
+        button.addAction(UIAction { _ in self.togglePasswordVisibility() }, for: .touchUpInside)
+        button.isHidden = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
 
     private let signInButton: UIButton = {
@@ -94,6 +114,7 @@ final class LoginViewController: UIViewController {
         setupView()
         setupHierarchy()
         setupLayout()
+        setupPasswordObservers()
     }
 
     // MARK: - Setups
@@ -108,6 +129,7 @@ final class LoginViewController: UIViewController {
             descriptionLabel,
             emailTextField,
             passwordTextField,
+            togglePasswordButton,
             signInButton,
             stackView
         ].forEach { view.addSubview($0) }
@@ -132,6 +154,9 @@ final class LoginViewController: UIViewController {
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             passwordTextField.heightAnchor.constraint(equalToConstant: 56),
+            togglePasswordButton.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
+            togglePasswordButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -16),
+            togglePasswordButton.heightAnchor.constraint(equalToConstant: 24),
             signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 64),
             signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -139,6 +164,10 @@ final class LoginViewController: UIViewController {
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -42)
         ])
+    }
+
+    private func setupPasswordObservers() {
+        passwordTextField.addAction(UIAction { _ in self.passwordTextFieldDidChange() }, for: .editingChanged)
     }
 }
 
@@ -150,4 +179,15 @@ private extension LoginViewController {
         registrationViewController.modalPresentationStyle = .fullScreen
         present(registrationViewController, animated: true, completion: nil)
     }
+
+    func togglePasswordVisibility() {
+        passwordTextField.isSecureTextEntry.toggle()
+        let image = passwordTextField.isSecureTextEntry ? "eye.slash": "eye"
+        togglePasswordButton.setImage(UIImage(systemName: image), for: .normal)
+    }
+
+    func passwordTextFieldDidChange() {
+        togglePasswordButton.isHidden = passwordTextField.text?.isEmpty ?? true
+    }
 }
+

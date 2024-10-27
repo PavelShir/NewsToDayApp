@@ -92,6 +92,14 @@
 			path = Authorization;
 			sourceTree = "<group>";
 		};
+		0F11F4062CCEB63B009DD9B7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0F11F4072CCEB644009DD9B7 /* UITextField+Extenstion.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0F838FD52CC8F6410028D301 /* Article */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +139,7 @@
 		31F988842CC554D4008B4517 /* NewsToDayApp */ = {
 			isa = PBXGroup;
 			children = (
+				0F11F4062CCEB63B009DD9B7 /* Extensions */,
 				CEB31F582CC6A6BD00564766 /* CustomView */,
 				CEB31F482CC6A30A00564766 /* NetworkManager */,
 				31F988A52CC55949008B4517 /* Service */,
@@ -296,6 +305,7 @@
 				0F11F4122CD108A4009DD9B7 /* CustomPageControl.swift in Sources */,
 				0F11F4132CD108A4009DD9B7 /* OnboardingVewCell.swift in Sources */,
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
+				0F11F4082CCEB64F009DD9B7 /* UITextField+Extenstion.swift in Sources */,
 				0F11F4052CCE590E009DD9B7 /* RegistrationViewController.swift in Sources */,
 				7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */,
 				0F11F4032CCE512B009DD9B7 /* LoginViewController.swift in Sources */,
