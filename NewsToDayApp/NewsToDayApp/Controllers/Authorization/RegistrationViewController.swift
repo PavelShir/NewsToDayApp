@@ -98,11 +98,12 @@ final class RegistrationViewController: UIViewController {
         return label
     }()
 
-    private let signInButton: UIButton = {
+    private lazy var signInButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign In", for: .normal)
         button.setTitleColor(.brandBlackPrimary, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        button.addAction(UIAction { _ in self.handleSignUpButton() }, for: .touchUpInside)
         return button
     }()
 
@@ -165,8 +166,16 @@ final class RegistrationViewController: UIViewController {
             signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             signUpButton.heightAnchor.constraint(equalToConstant:  56),
-            stackView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 202),
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -42)
         ])
+    }
+}
+
+// MARK: - Actions
+
+private extension RegistrationViewController {
+    func handleSignUpButton() {
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -78,11 +78,12 @@ final class LoginViewController: UIViewController {
         return label
     }()
 
-    private let signUpButton: UIButton = {
+    private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.brandBlackPrimary, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        button.addAction(UIAction { _ in self.handleSignInButton() }, for: .touchUpInside)
         return button
     }()
 
@@ -135,8 +136,18 @@ final class LoginViewController: UIViewController {
             signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             signInButton.heightAnchor.constraint(equalToConstant:  56),
-            stackView.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 298),
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -42)
         ])
+    }
+}
+
+// MARK: - Actions
+
+private extension LoginViewController {
+    func handleSignInButton() {
+        let registrationViewController = RegistrationViewController()
+        registrationViewController.modalPresentationStyle = .fullScreen
+        present(registrationViewController, animated: true, completion: nil)
     }
 }
