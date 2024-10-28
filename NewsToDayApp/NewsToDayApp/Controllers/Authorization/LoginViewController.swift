@@ -40,12 +40,13 @@ final class LoginViewController: UIViewController {
     }()
 
     private lazy var passwordTextField: UITextField = {
+        [weak self] in
         let textField = UITextField.create(
             placeholder: "Password",
             icon: .iconLock,
             isSecure: true
         ) {
-            self.setupPasswordObservers()
+            self?.setupPasswordObservers()
         }
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -55,19 +56,20 @@ final class LoginViewController: UIViewController {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         button.tintColor = .brandPurplePrimary
-        button.addAction(UIAction { _ in self.togglePasswordVisibility() }, for: .touchUpInside)
+        button.addAction(UIAction { [weak self] _ in self?.togglePasswordVisibility() }, for: .touchUpInside)
         button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    private let signInButton: UIButton = {
+    private lazy var signInButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign In", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         button.backgroundColor = .brandPurplePrimary
         button.layer.cornerRadius = 12
+        button.addAction(UIAction { [weak self] _ in self?.handleSignInButton() }, for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -94,7 +96,7 @@ final class LoginViewController: UIViewController {
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.brandBlackPrimary, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        button.addAction(UIAction { _ in self.handleSignInButton() }, for: .touchUpInside)
+        button.addAction(UIAction { [weak self] _ in self?.handleSignUpButton() }, for: .touchUpInside)
         return button
     }()
 
@@ -158,7 +160,7 @@ final class LoginViewController: UIViewController {
     }
 
     private func setupPasswordObservers() {
-        passwordTextField.addAction(UIAction { _ in self.passwordTextFieldDidChange() }, for: .editingChanged)
+        passwordTextField.addAction(UIAction { [weak self] _ in self?.passwordTextFieldDidChange() }, for: .editingChanged)
     }
 }
 
@@ -166,6 +168,16 @@ final class LoginViewController: UIViewController {
 
 private extension LoginViewController {
     func handleSignInButton() {
+        guard
+            let windowScene = view.window?.windowScene,
+            let sceneDelegate = windowScene.delegate as? SceneDelegate,
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty
+        else { return }
+        print("TAPPED SIGN IN BUTTON")
+    }
+
+    func handleSignUpButton() {
         let registrationViewController = RegistrationViewController()
         registrationViewController.modalPresentationStyle = .fullScreen
         present(registrationViewController, animated: true, completion: nil)

@@ -100,7 +100,7 @@ final class RegistrationViewController: UIViewController {
         button.setTitle("Sign In", for: .normal)
         button.setTitleColor(.brandBlackPrimary, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        button.addAction(UIAction { _ in self.handleSignUpButton() }, for: .touchUpInside)
+        button.addAction(UIAction { [weak self] _ in self?.handleSignInButton() }, for: .touchUpInside)
         return button
     }()
 
@@ -173,6 +173,16 @@ final class RegistrationViewController: UIViewController {
 
 private extension RegistrationViewController {
     func handleSignUpButton() {
+        guard
+            let username = usernameTextField.text, !username.isEmpty,
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty,
+            let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty
+        else { return }
+        print("TAPPED SIGN UP BUTTON")
+    }
+
+    func handleSignInButton() {
         dismiss(animated: true, completion: nil)
     }
 }

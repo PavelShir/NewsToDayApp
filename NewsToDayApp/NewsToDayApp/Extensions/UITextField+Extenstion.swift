@@ -20,7 +20,7 @@ extension UITextField {
         leftViewMode = .always
 
         // Добавляем целевой метод для изменения цвета иконки при изменении текста
-        addAction(UIAction { _ in self.textDidChange() }, for: .editingChanged)
+        addAction(UIAction { [weak self] _ in self?.textDidChange() }, for: .editingChanged)
     }
 
     private func textDidChange() {
