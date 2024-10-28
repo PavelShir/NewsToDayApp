@@ -31,59 +31,38 @@ final class RegistrationViewController: UIViewController {
     }()
 
     private let usernameTextField: UITextField = {
-        let textField = UITextField()
-        let userIcon: UIImage = .iconUser
-        textField.setLeftIcon(userIcon)
-        textField.setPlaceholder(text: "Username", color: .brandGreyPrimary)
-        textField.textAlignment = .left
-        textField.textColor = .brandBlackPrimary
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.layer.cornerRadius = 12
-        textField.backgroundColor = .brandGreyLighter
+        let textField = UITextField.create(
+            placeholder: "Username",
+            icon: .iconUser
+        )
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
     private let emailTextField: UITextField = {
-        let textField = UITextField()
-        let envelopeIcon: UIImage = .iconEnvelope
-        textField.setLeftIcon(envelopeIcon)
-        textField.setPlaceholder(text: "Email Adress", color: .brandGreyPrimary)
-        textField.textAlignment = .left
-        textField.textColor = .brandBlackPrimary
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.layer.cornerRadius = 12
-        textField.backgroundColor = .brandGreyLighter
+        let textField = UITextField.create(
+            placeholder: "Email",
+            icon: .iconEnvelope
+        )
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
     private let passwordTextField: UITextField = {
-        let textField = UITextField()
-        let lockIcon: UIImage = .iconLock
-        textField.setLeftIcon(lockIcon)
-        textField.setPlaceholder(text: "Password", color: .brandGreyPrimary)
-        textField.textAlignment = .left
-        textField.textColor = .brandBlackPrimary
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.layer.cornerRadius = 12
-        textField.backgroundColor = .brandGreyLighter
-        textField.isSecureTextEntry = true
+        let textField = UITextField.create(
+            placeholder: "Password",
+            icon: .iconLock,
+            isSecure: true
+        )
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
     private let repeatPasswordTextField: UITextField = {
-        let textField = UITextField()
-        let lockIcon: UIImage = .iconLock
-        textField.setLeftIcon(lockIcon)
-        textField.setPlaceholder(text: "Repeat Password", color: .brandGreyPrimary)
-        textField.textAlignment = .left
-        textField.textColor = .brandBlackPrimary
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.layer.cornerRadius = 12
-        textField.backgroundColor = .brandGreyLighter
-        textField.isSecureTextEntry = true
+        let textField = UITextField.create(
+            placeholder: "Repeat Password",
+            icon: .iconLock, isSecure: true
+        )
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()

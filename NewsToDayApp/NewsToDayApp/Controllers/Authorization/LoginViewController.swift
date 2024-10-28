@@ -31,31 +31,22 @@ final class LoginViewController: UIViewController {
     }()
 
     private let emailTextField: UITextField = {
-        let textField = UITextField()
-        let envelopeIcon: UIImage = .iconEnvelope
-        textField.setLeftIcon(envelopeIcon)
-        textField.setPlaceholder(text: "Email Adress", color: .brandGreyPrimary)
-        textField.textAlignment = .left
-        textField.textColor = .brandBlackPrimary
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.layer.cornerRadius = 12
-        textField.backgroundColor = .brandGreyLighter
+        let textField = UITextField.create(
+            placeholder: "Email",
+            icon: .iconEnvelope
+        )
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
     private lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        let lockIcon: UIImage = .iconLock
-        textField.setLeftIcon(lockIcon)
-        textField.setPlaceholder(text: "Password", color: .brandGreyPrimary)
-        textField.textAlignment = .left
-        textField.textColor = .brandBlackPrimary
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.layer.cornerRadius = 12
-        textField.backgroundColor = .brandGreyLighter
-        textField.isSecureTextEntry = true
-        textField.addAction(UIAction { _ in self.setupPasswordObservers() }, for: .editingChanged)
+        let textField = UITextField.create(
+            placeholder: "Password",
+            icon: .iconLock,
+            isSecure: true
+        ) {
+            self.setupPasswordObservers()
+        }
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
