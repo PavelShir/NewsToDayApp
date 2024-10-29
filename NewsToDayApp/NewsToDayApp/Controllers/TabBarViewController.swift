@@ -17,15 +17,14 @@ class TabBarViewController: UITabBarController {
 
     private func generateTabBar() {
         viewControllers = [
-        generateVC(viewController: BrowseViewController(), title: "Browse", image: UIImage(systemName: "house")),
-        generateVC(viewController: CategoriesViewController(), title: "Categories", image: UIImage(systemName: "list.bullet.circle")),
-        generateVC(viewController: BookmarksViewController(), title: "Bookmarks", image: UIImage(systemName: "bookmark")),
-        generateVC(viewController: ProfileViewController(), title: "Profile", image: UIImage(systemName: "person.crop.circle"))
+            generateVC(viewController: BrowseViewController(), image: UIImage.home),
+            generateVC(viewController: CategoriesViewController(), image: UIImage.apps),
+            generateVC(viewController: UINavigationController(rootViewController: BookmarksViewController()), image: UIImage.bookmark),
+            generateVC(viewController: ProfileViewController(), image: UIImage.profile)
         ]
     }
 
-    private func generateVC(viewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
-        viewController.tabBarItem.title = title
+    private func generateVC(viewController: UIViewController, image: UIImage?) -> UIViewController {
         viewController.tabBarItem.image = image
         return viewController
     }
