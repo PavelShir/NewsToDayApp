@@ -206,6 +206,9 @@ final class OnboardingViewController: UIViewController {
             }
         } else {
             //TODO: get started app
+            let startingVC = TabBarViewController()
+            startingVC.modalPresentationStyle = .fullScreen
+            present(startingVC, animated: true)
         }
     }
 }

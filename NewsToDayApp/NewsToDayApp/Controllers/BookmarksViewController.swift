@@ -147,10 +147,10 @@ extension BookmarksViewController: UITableViewDataSource, UITableViewDelegate {
         if articles.count > 0 {
             let selectedCell = articles[indexPath.item]
             ///Здесь создаем экземпляр контроллера для перехода на экран со статьей
-            //let articleVC =
+            let articleVC = ArticleViewController(article: selectedCell)
             //articleVC.article = selectedCell
-            //articleVC.modalPresentationStyle = .pageSheet
-            //present(articleVC, animated: true, completion: nil)
+            articleVC.modalPresentationStyle = .pageSheet
+            present(articleVC, animated: true, completion: nil)
         }
     }
     
