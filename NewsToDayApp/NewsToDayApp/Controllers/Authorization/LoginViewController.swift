@@ -59,6 +59,7 @@ final class LoginViewController: UIViewController {
             },
             for: .editingChanged
         )
+        textField.textContentType = .oneTimeCode
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -149,6 +150,8 @@ final class LoginViewController: UIViewController {
 
     private func setupView() {
         view.backgroundColor = .white
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
 
     private func setupHierarchy() {
@@ -309,3 +312,11 @@ private extension LoginViewController {
     }
 }
 
+// MARK: - Keyboard
+
+extension LoginViewController {
+    @objc
+    private func hideKeyboard() {
+        view.endEditing(true)
+    }
+}

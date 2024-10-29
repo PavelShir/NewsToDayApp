@@ -62,6 +62,7 @@ final class RegistrationViewController: UIViewController {
             icon: .iconLock,
             isSecure: true
         )
+        textField.textContentType = .oneTimeCode
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -71,6 +72,7 @@ final class RegistrationViewController: UIViewController {
             placeholder: K.Authorization.placeholderRepeatPassword,
             icon: .iconLock, isSecure: true
         )
+        textField.textContentType = .oneTimeCode
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -145,6 +147,8 @@ final class RegistrationViewController: UIViewController {
 
     private func setupView() {
         view.backgroundColor = .white
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
 
     private func setupHierarchy() {
@@ -306,5 +310,14 @@ private extension RegistrationViewController {
 
     func handleSignInButton() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - Keyboard
+
+extension RegistrationViewController {
+    @objc
+    private func hideKeyboard() {
+        view.endEditing(true)
     }
 }
