@@ -13,8 +13,11 @@ final class RegistrationViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Welcome to NewsToDay"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.text = K.Authorization.registerTitle
+        label.font = UIFont.systemFont(
+            ofSize: K.Authorization.fontSizeTitleLabel,
+            weight: .bold
+        )
         label.textColor = .brandBlackPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -22,9 +25,12 @@ final class RegistrationViewController: UIViewController {
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hello, I guess you are new around here. You can start using the application after sign up."
+        label.text = K.Authorization.registerDescription
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.font = UIFont.systemFont(
+            ofSize: K.Authorization.fontSizeDescriptionLabel,
+            weight: .regular
+        )
         label.textColor = .brandGreyPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -32,7 +38,7 @@ final class RegistrationViewController: UIViewController {
 
     private let usernameTextField: UITextField = {
         let textField = UITextField.create(
-            placeholder: "Username",
+            placeholder: K.Authorization.placeholderName,
             icon: .iconUser
         )
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +47,7 @@ final class RegistrationViewController: UIViewController {
 
     private let emailTextField: UITextField = {
         let textField = UITextField.create(
-            placeholder: "Email",
+            placeholder: K.Authorization.placeholderEmail,
             icon: .iconEnvelope
         )
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +56,7 @@ final class RegistrationViewController: UIViewController {
 
     private let passwordTextField: UITextField = {
         let textField = UITextField.create(
-            placeholder: "Password",
+            placeholder: K.Authorization.placeholderPassword,
             icon: .iconLock,
             isSecure: true
         )
@@ -60,7 +66,7 @@ final class RegistrationViewController: UIViewController {
 
     private let repeatPasswordTextField: UITextField = {
         let textField = UITextField.create(
-            placeholder: "Repeat Password",
+            placeholder: K.Authorization.placeholderRepeatPassword,
             icon: .iconLock, isSecure: true
         )
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -69,11 +75,14 @@ final class RegistrationViewController: UIViewController {
 
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle(K.Authorization.signUpButtonTitle, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font = UIFont.systemFont(
+            ofSize: K.Authorization.fontSizeSign,
+            weight: .bold
+        )
         button.backgroundColor = .brandPurplePrimary
-        button.layer.cornerRadius = 12
+        button.layer.cornerRadius = K.Authorization.cornerRadiusSignButton
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -82,25 +91,36 @@ final class RegistrationViewController: UIViewController {
         let view = UIStackView()
         view.axis = .horizontal
         view.alignment = .center
-        view.spacing = 5
+        view.spacing = K.Authorization.spacingStackView
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private let signInLabel: UILabel = {
         let label = UILabel()
-        label.text = "Already have an account?"
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.text = K.Authorization.signInLabel
+        label.font = UIFont.systemFont(
+            ofSize: K.Authorization.fontSizeSign,
+            weight: .regular
+        )
         label.textColor = .brandBlackLighter
         return label
     }()
 
     private lazy var signInButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle(K.Authorization.signInButtonTitle, for: .normal)
         button.setTitleColor(.brandBlackPrimary, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        button.addAction(UIAction { [weak self] _ in self?.handleSignInButton() }, for: .touchUpInside)
+        button.titleLabel?.font = UIFont.systemFont(
+            ofSize: K.Authorization.fontSizeSign,
+            weight: .regular
+        )
+        button.addAction(
+            UIAction { [weak self] _ in
+                self?.handleSignInButton()
+            },
+            for: .touchUpInside
+        )
         return button
     }()
 
@@ -138,33 +158,108 @@ final class RegistrationViewController: UIViewController {
 
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 72),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            usernameTextField.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 32),
-            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            usernameTextField.heightAnchor.constraint(equalToConstant: 56),
-            emailTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 16),
-            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            emailTextField.heightAnchor.constraint(equalToConstant: 56),
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 56),
-            repeatPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
-            repeatPasswordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            repeatPasswordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            repeatPasswordTextField.heightAnchor.constraint(equalToConstant: 56),
-            signUpButton.topAnchor.constraint(equalTo: repeatPasswordTextField.bottomAnchor, constant: 64),
-            signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            signUpButton.heightAnchor.constraint(equalToConstant:  56),
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -42)
+            titleLabel.topAnchor.constraint(
+                equalTo: view.topAnchor,
+                constant: K.Authorization.topMarginTitleLabel
+            ),
+            titleLabel.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: K.Authorization.horizontalMarginTwenty
+            ),
+            descriptionLabel.topAnchor.constraint(
+                equalTo: titleLabel.bottomAnchor,
+                constant: K.Authorization.topMarginDescriptionLabel
+            ),
+            descriptionLabel.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: K.Authorization.horizontalMarginTwenty
+            ),
+            descriptionLabel.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -K.Authorization.horizontalMarginTwenty
+            ),
+            usernameTextField.topAnchor.constraint(
+                equalTo: descriptionLabel.bottomAnchor,
+                constant: K.Authorization.topMarginUpperTextField
+            ),
+            usernameTextField.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: K.Authorization.horizontalMarginTwenty
+            ),
+            usernameTextField.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -K.Authorization.horizontalMarginTwenty
+            ),
+            usernameTextField.heightAnchor.constraint(
+                equalToConstant: K.Authorization.heightTextField
+            ),
+            emailTextField.topAnchor.constraint(
+                equalTo: usernameTextField.bottomAnchor,
+                constant: K.Authorization.topMarginInteriorTextField
+            ),
+            emailTextField.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: K.Authorization.horizontalMarginTwenty
+            ),
+            emailTextField.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -K.Authorization.horizontalMarginTwenty
+            ),
+            emailTextField.heightAnchor.constraint(
+                equalToConstant: K.Authorization.heightTextField
+            ),
+            passwordTextField.topAnchor.constraint(
+                equalTo: emailTextField.bottomAnchor,
+                constant: K.Authorization.topMarginInteriorTextField
+            ),
+            passwordTextField.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: K.Authorization.horizontalMarginTwenty
+            ),
+            passwordTextField.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -K.Authorization.horizontalMarginTwenty
+            ),
+            passwordTextField.heightAnchor.constraint(
+                equalToConstant: K.Authorization.heightTextField
+            ),
+            repeatPasswordTextField.topAnchor.constraint(
+                equalTo: passwordTextField.bottomAnchor,
+                constant: K.Authorization.horizontalMarginTwenty
+            ),
+            repeatPasswordTextField.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: K.Authorization.horizontalMarginTwenty
+            ),
+            repeatPasswordTextField.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -K.Authorization.horizontalMarginTwenty
+            ),
+            repeatPasswordTextField.heightAnchor.constraint(
+                equalToConstant: K.Authorization.heightTextField
+            ),
+            signUpButton.topAnchor.constraint(
+                equalTo: repeatPasswordTextField.bottomAnchor,
+                constant: K.Authorization.topMarginSignButton
+            ),
+            signUpButton.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: K.Authorization.horizontalMarginTwenty
+            ),
+            signUpButton.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -K.Authorization.horizontalMarginTwenty
+            ),
+            signUpButton.heightAnchor.constraint(
+                equalToConstant:  K.Authorization.heightSignButton
+            ),
+            stackView.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor
+            ),
+            stackView.bottomAnchor.constraint(
+                equalTo: view.bottomAnchor,
+                constant: -K.Authorization.bottomMarginStackView
+            )
         ])
     }
 }

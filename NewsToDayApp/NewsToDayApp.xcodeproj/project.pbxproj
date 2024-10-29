@@ -10,6 +10,9 @@
 		0F11F4122CD108A4009DD9B7 /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4102CD108A4009DD9B7 /* CustomPageControl.swift */; };
 		0F11F4132CD108A4009DD9B7 /* OnboardingVewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4112CD108A4009DD9B7 /* OnboardingVewCell.swift */; };
 		0F11F4152CD108D5009DD9B7 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4142CD108D5009DD9B7 /* OnboardingModel.swift */; };
+		0F11F4192CD1179A009DD9B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4162CD1179A009DD9B7 /* LoginViewController.swift */; };
+		0F11F41A2CD1179A009DD9B7 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4172CD1179A009DD9B7 /* RegistrationViewController.swift */; };
+		0F11F41C2CD117B4009DD9B7 /* UITextField+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F41B2CD117B4009DD9B7 /* UITextField+Extenstion.swift */; };
 		0F838FD42CC8F5600028D301 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F838FD32CC8F5410028D301 /* ArticleViewController.swift */; };
 		0F838FD92CC8F76A0028D301 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F838FD82CC8F7640028D301 /* ArticleView.swift */; };
 		0F8390432CC95C500028D301 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F8390422CC95C500028D301 /* Config.plist */; };
@@ -42,6 +45,9 @@
 		0F11F4102CD108A4009DD9B7 /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		0F11F4112CD108A4009DD9B7 /* OnboardingVewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVewCell.swift; sourceTree = "<group>"; };
 		0F11F4142CD108D5009DD9B7 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		0F11F4162CD1179A009DD9B7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0F11F4172CD1179A009DD9B7 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		0F11F41B2CD117B4009DD9B7 /* UITextField+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extenstion.swift"; sourceTree = "<group>"; };
 		0F838FD32CC8F5410028D301 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		0F838FD82CC8F7640028D301 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		0F8390422CC95C500028D301 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
@@ -83,21 +89,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F11F4012CCE50CA009DD9B7 /* Authorization */ = {
-			isa = PBXGroup;
-			children = (
-				0F11F4042CCE590C009DD9B7 /* RegistrationViewController.swift */,
-				0F11F4022CCE50E3009DD9B7 /* LoginViewController.swift */,
-			);
-			path = Authorization;
-			sourceTree = "<group>";
-		};
 		0F11F4062CCEB63B009DD9B7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0F11F4072CCEB644009DD9B7 /* UITextField+Extenstion.swift */,
+				0F11F41B2CD117B4009DD9B7 /* UITextField+Extenstion.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0F11F4182CD1179A009DD9B7 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				0F11F4162CD1179A009DD9B7 /* LoginViewController.swift */,
+				0F11F4172CD1179A009DD9B7 /* RegistrationViewController.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		0F838FD52CC8F6410028D301 /* Article */ = {
@@ -166,6 +172,7 @@
 		31F988A62CC5595D008B4517 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0F11F4182CD1179A009DD9B7 /* Authorization */,
 				CE76F9BD2CCBD2B80030365E /* SearchViewController.swift */,
 				31F988992CC5580C008B4517 /* OnboardingViewController.swift */,
 				31F9889B2CC5582B008B4517 /* TabBarViewController.swift */,
@@ -303,12 +310,12 @@
 				CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */,
 				31F9889C2CC5582B008B4517 /* TabBarViewController.swift in Sources */,
 				0F11F4122CD108A4009DD9B7 /* CustomPageControl.swift in Sources */,
+				0F11F41C2CD117B4009DD9B7 /* UITextField+Extenstion.swift in Sources */,
+				0F11F4192CD1179A009DD9B7 /* LoginViewController.swift in Sources */,
+				0F11F41A2CD1179A009DD9B7 /* RegistrationViewController.swift in Sources */,
 				0F11F4132CD108A4009DD9B7 /* OnboardingVewCell.swift in Sources */,
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
-				0F11F4082CCEB64F009DD9B7 /* UITextField+Extenstion.swift in Sources */,
-				0F11F4052CCE590E009DD9B7 /* RegistrationViewController.swift in Sources */,
 				7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */,
-				0F11F4032CCE512B009DD9B7 /* LoginViewController.swift in Sources */,
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
 				31F9889A2CC5580C008B4517 /* OnboardingViewController.swift in Sources */,
 				0F838FD92CC8F76A0028D301 /* ArticleView.swift in Sources */,

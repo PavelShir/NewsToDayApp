@@ -30,12 +30,7 @@ extension UITextField {
         iconView.tintColor = text?.isEmpty == false ? .brandPurplePrimary : .brandGreyPrimary
     }
 
-    static func create(
-        placeholder: String,
-        icon: UIImage,
-        isSecure: Bool = false,
-        action: (() -> ())? = nil
-    ) -> UITextField {
+    static func create(placeholder: String, icon: UIImage, isSecure: Bool = false) -> UITextField {
         let textField = UITextField()
         textField.setLeftIcon(icon)
         textField.attributedPlaceholder = NSAttributedString(
@@ -48,10 +43,6 @@ extension UITextField {
         textField.layer.cornerRadius = 12
         textField.backgroundColor = .brandGreyLighter
         textField.isSecureTextEntry = isSecure
-        if let action {
-            textField.addAction(UIAction { _ in action() }, for: .editingChanged)
-        }
-
         return textField
     }
 }
