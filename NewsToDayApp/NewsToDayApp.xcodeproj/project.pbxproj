@@ -25,6 +25,7 @@
 		796530762CCB6EAE00FF3C5B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 796530752CCB6EAE00FF3C5B /* Alamofire */; };
 		796530782CCB6EB300FF3C5B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 796530772CCB6EB300FF3C5B /* Kingfisher */; };
 		7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796530792CCB904A00FF3C5B /* Constants.swift */; };
+		7965307C2CCE8EF000FF3C5B /* CategoriesSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7965307B2CCE8EF000FF3C5B /* CategoriesSetting.swift */; };
 		CE63BF9C2CC8A120000A82F5 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */; };
 		CE76F96B2CC9FBCF0030365E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */; };
 		CE76F9BC2CCBAF8A0030365E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76F9BB2CCBAF850030365E /* SearchBar.swift */; };
@@ -53,6 +54,7 @@
 		31F988A12CC5586A008B4517 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		31F988A32CC55879008B4517 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		796530792CCB904A00FF3C5B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7965307B2CCE8EF000FF3C5B /* CategoriesSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesSetting.swift; sourceTree = "<group>"; };
 		CE63BF9B2CC8A113000A82F5 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		CE76F96A2CC9FBBC0030365E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		CE76F9BB2CCBAF850030365E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				0F8390442CC97EE80028D301 /* Models */,
 				31F9888E2CC554D8008B4517 /* Assets.xcassets */,
 				CEB31F4B2CC6A33E00564766 /* Model.swift */,
+				7965307B2CCE8EF000FF3C5B /* CategoriesSetting.swift */,
 				796530792CCB904A00FF3C5B /* Constants.swift */,
 				31F988932CC554D8008B4517 /* Info.plist */,
 				0F8390422CC95C500028D301 /* Config.plist */,
@@ -259,6 +262,7 @@
 				CE76F9BE2CCBD2C00030365E /* SearchViewController.swift in Sources */,
 				CE63BF9C2CC8A120000A82F5 /* CustomNavigationBar.swift in Sources */,
 				31F988A22CC5586A008B4517 /* BookmarksViewController.swift in Sources */,
+				7965307C2CCE8EF000FF3C5B /* CategoriesSetting.swift in Sources */,
 				CEB31F472CC6A30300564766 /* NetworkManager.swift in Sources */,
 				CEB31F572CC6A6B800564766 /* CustomCell.swift in Sources */,
 				31F9889E2CC55851008B4517 /* BrowseViewController.swift in Sources */,
