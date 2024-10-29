@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 final class RegistrationViewController: UIViewController {
 
@@ -73,7 +75,7 @@ final class RegistrationViewController: UIViewController {
         return textField
     }()
 
-    private let signUpButton: UIButton = {
+    private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(K.Authorization.signUpButtonTitle, for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -83,6 +85,12 @@ final class RegistrationViewController: UIViewController {
         )
         button.backgroundColor = .brandPurplePrimary
         button.layer.cornerRadius = K.Authorization.cornerRadiusSignButton
+        button.addAction(
+            UIAction { [weak self] _ in
+                self?.handleSignUpButton()
+            },
+            for: .touchUpInside
+        )
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -274,7 +282,26 @@ private extension RegistrationViewController {
             let password = passwordTextField.text, !password.isEmpty,
             let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty
         else { return }
-        print("TAPPED SIGN UP BUTTON")
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                print("Ошибка регистрации: \(error.localizedDescription)")
+                return
+            }
+
+            if let uid = authResult?.user.uid {
+                let db = Firestore.firestore()
+                db.collection("users").document(uid).setData([
+                    "username": username,
+                ]) { error in
+                    if let error = error {
+                        print("Ошибка сохранения username: \(error.localizedDescription)")
+                    } else {
+                        print("Пользователь успешно зарегистрирован и username сохранен")
+                        //TODO: Перейти на главный экран или другое действие
+                    }
+                }
+            }
+        }
     }
 
     func handleSignInButton() {
