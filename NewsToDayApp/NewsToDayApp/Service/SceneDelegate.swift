@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
 
 //        window.rootViewController = BookmarksViewController()
-        window.rootViewController = OnboardingViewController()
+        window.rootViewController = ProfileViewController()
 
         
         window.makeKeyAndVisible()
