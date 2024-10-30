@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     
     let navigationBar = CustomNavigationBar()
-    private var user: User?
+    private var user: UserModel?
     
     private let fotoImage: UIImageView = {
         let fotoImage = UIImageView()
@@ -69,6 +70,7 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         setupNavBar()
         setupConstreints()
+        loadUserData()
     }
     
     private func setupNavBar() {
@@ -90,14 +92,19 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func signOutTapped(_ sender: UIButton) {
-        let onBoardingView = OnboardingViewController()
-        
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.rootViewController = onBoardingView
-            window.makeKeyAndVisible()
-            
-            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        guard
+            let windowScene = view.window?.windowScene,
+            let sceneDelegate = windowScene.delegate as? SceneDelegate
+        else { return }
+
+        AuthManager.shared.logout { [weak self] result in
+            switch result {
+            case .success:
+                let vc = LoginViewController()
+                sceneDelegate.window?.rootViewController = vc
+            case .failure(let error):
+                self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+            }
         }
     }
     
@@ -148,5 +155,27 @@ class ProfileViewController: UIViewController {
             termsButton.centerXAnchor.constraint(equalTo: signOutButton.centerXAnchor),
             termsButton.widthAnchor.constraint(equalTo: signOutButton.widthAnchor)
         ])
+    }
+}
+
+// MARK: - Load data
+
+extension ProfileViewController {
+    private func loadUserData() {
+        guard let user = AuthManager.shared.currentUser else { return }
+
+        FirestoreManager.shared.getUserData(userID: user.uid) { [weak self] result in
+            switch result {
+            case .success(let userData):
+                if let username = userData["username"] as? String {
+                    self?.userName.text = username
+                }
+
+                self?.userEmail.text = user.email
+
+            case .failure(let error):
+                self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+            }
+        }
     }
 }

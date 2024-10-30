@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct User: Codable, Equatable {
+struct UserModel: Codable, Equatable {
     var name: String
     let mail: String
     let password: String
