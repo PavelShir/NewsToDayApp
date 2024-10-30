@@ -34,7 +34,7 @@
 		31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A32CC55879008B4517 /* ProfileViewController.swift */; };
 		31F988BC2CD169E1008B4517 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 31F988BB2CD169E1008B4517 /* Kingfisher */; };
 		31F988BF2CD169E9008B4517 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 31F988BE2CD169E9008B4517 /* Alamofire */; };
-		31F988C32CD1713A008B4517 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988C22CD1713A008B4517 /* User.swift */; };
+		31F988C32CD1713A008B4517 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988C22CD1713A008B4517 /* UserModel.swift */; };
 		31F988C52CD19200008B4517 /* ProfileButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988C42CD19200008B4517 /* ProfileButtons.swift */; };
 		7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796530792CCB904A00FF3C5B /* Constants.swift */; };
 		7965307C2CCE8EF000FF3C5B /* CategoriesSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7965307B2CCE8EF000FF3C5B /* CategoriesSetting.swift */; };
@@ -72,7 +72,7 @@
 		31F9889F2CC5585E008B4517 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		31F988A12CC5586A008B4517 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		31F988A32CC55879008B4517 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		31F988C22CD1713A008B4517 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		31F988C22CD1713A008B4517 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		31F988C42CD19200008B4517 /* ProfileButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButtons.swift; sourceTree = "<group>"; };
 		796530792CCB904A00FF3C5B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7965307B2CCE8EF000FF3C5B /* CategoriesSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesSetting.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 			children = (
 				CEB31F4B2CC6A33E00564766 /* Model.swift */,
 				0F11F4142CD108D5009DD9B7 /* OnboardingModel.swift */,
-				31F988C22CD1713A008B4517 /* User.swift */,
+				31F988C22CD1713A008B4517 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
 				31F9889A2CC5580C008B4517 /* OnboardingViewController.swift in Sources */,
 				0F838FD92CC8F76A0028D301 /* ArticleView.swift in Sources */,
-				31F988C32CD1713A008B4517 /* User.swift in Sources */,
+				31F988C32CD1713A008B4517 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

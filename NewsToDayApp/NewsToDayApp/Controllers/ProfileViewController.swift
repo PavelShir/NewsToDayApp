@@ -11,7 +11,7 @@ import FirebaseAuth
 class ProfileViewController: UIViewController {
     
     let navigationBar = CustomNavigationBar()
-    private var user: User?
+    private var user: UserModel?
     
     private let fotoImage: UIImageView = {
         let fotoImage = UIImageView()
