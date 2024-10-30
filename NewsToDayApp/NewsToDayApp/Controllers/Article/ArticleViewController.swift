@@ -11,7 +11,6 @@ import Kingfisher
 final class ArticleViewController: UIViewController {
     
     let article: Article
-    let navigationBar = CustomNavigationBar()
     let imageView = UIImageView()
     let labelTitle = UILabel()
     let labelDescription = UILabel()
@@ -127,8 +126,6 @@ final class ArticleViewController: UIViewController {
         textView.textContainerInset = UIEdgeInsets( top: 20, left: 20, bottom: 0, right: 20)
         textView.setContentHuggingPriority(.required, for: .vertical)
         textView.textAlignment = .justified
-//        textView.clipsToBounds = false
-        //textView.showsVerticalScrollIndicator = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = article.content ?? "No content"
     }
