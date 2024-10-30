@@ -43,6 +43,7 @@ final class LoginViewController: UIViewController {
             placeholder: K.Authorization.placeholderEmail,
             icon: .iconEnvelope
         )
+        textField.text = "user@example.com" // TODO: Use temporary data for development. Remove this line before production.
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -59,7 +60,8 @@ final class LoginViewController: UIViewController {
             },
             for: .editingChanged
         )
-        textField.textContentType = .oneTimeCode
+        textField.autocapitalizationType = .none
+        textField.text = "123456" // TODO: Use temporary data for development. Remove this line before production.
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()

@@ -43,6 +43,7 @@ extension UITextField {
         textField.layer.cornerRadius = 12
         textField.backgroundColor = .brandGreyLighter
         textField.isSecureTextEntry = isSecure
+        textField.autocapitalizationType = .none
         return textField
     }
 }
