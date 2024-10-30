@@ -9,10 +9,10 @@ import UIKit
 
 class BookmarksViewController: UIViewController {
     
-    
-    private var article: [Article] = []
+    private var articles: [Article] = []
     private let networkManager = NetworkService.shared
-    let navigationBar = CustomNavigationBar()
+    private let navigationBar = CustomNavigationBar()
+    private let searchBar = SearchBar()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -36,6 +36,7 @@ class BookmarksViewController: UIViewController {
         fetchArticle()
         
         setupNavBar()
+        setupSearchBar()
         setupTableView()
         setupEmptyStateView()
         setupConstraints()
@@ -46,7 +47,7 @@ class BookmarksViewController: UIViewController {
     //MARK: - Private Methods
     
     private func updateView() {
-        if article.isEmpty {
+        if articles.isEmpty {
             tableView.isHidden = true
             emptyStateView.isHidden = false
         } else {
@@ -60,7 +61,7 @@ class BookmarksViewController: UIViewController {
         networkManager.fetchAF { [unowned self] result in
             switch result {
             case .success(let article):
-                self.article = article
+                self.articles = article
                 self.tableView.reloadData()
                 self.updateView()
             case .failure(let error):
@@ -78,6 +79,12 @@ class BookmarksViewController: UIViewController {
         addChild(navigationBar)
         view.addSubview(navigationBar.view)
         navigationBar.didMove(toParent: self)
+    }
+    
+    private func setupSearchBar() {
+        searchBar.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(searchBar.view)
+        
     }
     
     
@@ -103,7 +110,11 @@ class BookmarksViewController: UIViewController {
             navigationBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.view.heightAnchor.constraint(equalToConstant: 50),
             
-            tableView.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor, constant: 40),
+            searchBar.view.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor, constant: 20),
+            searchBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            searchBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+            
+            tableView.topAnchor.constraint(equalTo: searchBar.view.bottomAnchor, constant: 40),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -121,18 +132,26 @@ class BookmarksViewController: UIViewController {
 
 extension BookmarksViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return article.count
-        
+        return articles.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.reusedID, for: indexPath) as! CustomCell
-        let arts = article[indexPath.row]
+        let arts = articles[indexPath.row]
         cell.setupCell(article: arts )
         return cell
     }
-    //MARK: - Article
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(ArticleViewController(article: article[indexPath.row]), animated: true)
+        if articles.count > 0 {
+            let selectedCell = articles[indexPath.item]
+            ///Здесь создаем экземпляр контроллера для перехода на экран со статьей
+            let articleVC = ArticleViewController(article: selectedCell)
+            //articleVC.article = selectedCell
+            articleVC.modalPresentationStyle = .pageSheet
+            present(articleVC, animated: true, completion: nil)
+        }
     }
+    
 }

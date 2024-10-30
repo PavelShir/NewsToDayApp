@@ -11,7 +11,7 @@ class EmptyStateView: UIView {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "IconBook")
+        imageView.image = UIImage(named: "placeholder")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false

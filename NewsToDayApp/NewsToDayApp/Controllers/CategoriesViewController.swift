@@ -34,6 +34,26 @@ class CategoriesViewController: UIViewController {
         return element
     }()
     
+    private lazy var nextButton : UIButton = {
+        let element = UIButton()
+        element.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        element.backgroundColor = UIColor(named: K.BrandColors.purplePrimary)
+        element.setTitleColor(.white, for: .normal)
+        element.layer.borderWidth = 2
+        element.layer.borderColor = UIColor(named: K.BrandColors.purplePrimary)?.cgColor
+        element.layer.cornerRadius = 12
+        element.setTitle("Next", for: .normal)
+        element.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
+    private lazy var spaceView : UIView = {
+        let element = UIView()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
     private lazy var collectionview : UICollectionView = {
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -68,19 +88,56 @@ class CategoriesViewController: UIViewController {
                       K.Categories.covid19,
                       K.Categories.middleEast ]
     
+
+    var selectedCategories: Set<String> = [] 
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedCategories = CategoriesSetting.shared.getSettingLoad()
         title = "Categories"
         setView()
         setConstraints()
         setDelegate()
     }
     
+    // MARK: - Setup Delegate
+    
     private func setDelegate(){
         collectionview.dataSource = self
         collectionview.delegate = self
     }
+    
+    // MARK: - Public Action
+    
+    @objc func nextButtonPressed(_ sender: UIButton){
+        
+    }
+    
+    public func categoryChanged(category : String){
+        
+        selectedCategories = CategoriesSetting.shared.getSettingLoad()
+        
+        if selectedCategories.contains(category) {
+            selectedCategories.remove(category)
+        } else {
+            selectedCategories.insert(category)
+        }
+        // MARK: - Save Categories Settings
+        CategoriesSetting.shared.saveSettings(selectedCategories)
+        
+        // MARK: - Refresh CollectionView
+        for i in 0...categories.count-1 {
+            if let cell = self.collectionview.cellForItem(at: NSIndexPath(row: i, section: 0) as IndexPath) as? CategoryCollectionViewCell {
+                cell.button.backgroundColor = selectedCategories.contains(cell.button.titleLabel?.text ?? "") ?  UIColor(named: K.BrandColors.purplePrimary) : .white
+              
+                cell.button.layer.borderColor = selectedCategories.contains(cell.button.titleLabel?.text ?? "") ?  UIColor(named: K.BrandColors.purplePrimary)?.cgColor : UIColor(named: K.BrandColors.greyLighter)?.cgColor
+                
+                cell.button.setTitleColor(selectedCategories.contains(cell.button.titleLabel?.text ?? "") ?  .white : UIColor(named: K.BrandColors.greyDark), for: .normal)
+            }
+        }
+    }
+    
     
     // MARK: - Set View
     
@@ -89,9 +146,12 @@ class CategoriesViewController: UIViewController {
         view.backgroundColor = .white
         labelTitle.text = "Categories"
         labelTitleDescription.text = "Thousands of articles in each category"
+        
         mainStack.addArrangedSubview(labelTitle)
         mainStack.addArrangedSubview(labelTitleDescription)
         mainStack.addArrangedSubview(collectionview)
+        mainStack.addArrangedSubview(nextButton)
+        mainStack.addArrangedSubview(spaceView)
         view.addSubview(mainStack)
     }
 }
@@ -106,6 +166,8 @@ extension CategoriesViewController {
             mainStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             mainStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             mainStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            nextButton.heightAnchor.constraint(equalToConstant: 56),
+            spaceView.heightAnchor.constraint(equalToConstant: 56),
         ])
     }
 }
@@ -117,14 +179,24 @@ extension CategoriesViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! CategoryCollectionViewCell
+        let category = categories[indexPath.row]
         
+        //cell.isSelected = self.selectedCategories.contains(category)
+        cell.button.backgroundColor = self.selectedCategories.contains(category) ?  UIColor(named: K.BrandColors.purplePrimary) : .white
+        
+        cell.button.layer.borderColor = self.selectedCategories.contains(category) ?  UIColor(named: K.BrandColors.purplePrimary)?.cgColor : UIColor(named: K.BrandColors.greyLighter)?.cgColor
+        
+        cell.button.setTitleColor(self.selectedCategories.contains(category) ?  .white : UIColor(named: K.BrandColors.greyDark), for: .normal)
+                                  
         cell.button.setTitle(categories[indexPath.row], for: .normal)
+        cell.delegate = self
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
+    
 }
 
 class CategoryCollectionViewCell: UICollectionViewCell {
@@ -141,12 +213,14 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         element.layer.borderWidth = 2
         element.layer.borderColor = UIColor(named: K.BrandColors.greyLighter)?.cgColor
         element.layer.cornerRadius = 12
-        element.addTarget(CategoryCollectionViewCell.self, action: #selector(buttonPressed), for: .touchUpInside)
+        element.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
     // MARK: - Life cycle
+    
+    weak var delegate : CategoriesViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -161,6 +235,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         addSubview(button)
         
         NSLayoutConstraint.activate([
+            
             button.topAnchor.constraint(equalTo: topAnchor),
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -172,9 +247,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     
     @objc func buttonPressed(_ sender: UIButton) {
-                
-        
-        
+        //Select|Unselect caterory by name
+        delegate?.categoryChanged(category: sender.currentTitle!)
     }
     
     required init?(coder aDecoder: NSCoder) {
