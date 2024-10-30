@@ -7,11 +7,15 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+
+
+final class SearchViewController: UIViewController {
     
-    let searchTableView = UITableView()
-    let navigationBar = CustomNavigationBar()
+    private let searchTableView = UITableView()
+    private let navigationBar = CustomNavigationBar()
     var articles: [Article] = []
+    
+    //MARK: - Private Property
     
     private lazy var emptyStateView: EmptyStateView = {
         let view = EmptyStateView()
@@ -20,6 +24,8 @@ class SearchViewController: UIViewController {
         return view
     }()
     
+    
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -32,8 +38,10 @@ class SearchViewController: UIViewController {
         
         emptyStateView.isHidden = !articles.isEmpty
         view.addSubview(emptyStateView)
-        
     }
+    
+    
+    //MARK: - Setup UI
     
     private func setupTableView() {
         searchTableView.delegate = self
@@ -54,10 +62,11 @@ class SearchViewController: UIViewController {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            navigationBar.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        
+            navigationBar.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             navigationBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navigationBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            navigationBar.view.heightAnchor.constraint(equalToConstant: 50),
+            navigationBar.view.heightAnchor.constraint(equalToConstant: 70),
             
             searchTableView.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor),
             searchTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -67,6 +76,7 @@ class SearchViewController: UIViewController {
     }
 }
 
+//MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,7 +92,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         if articles.count > 0 {
             let arts = articles[indexPath.row]
-            cell.setupCell(article: arts )
+            cell.setupCell(article: arts)
         } else {
             emptyStateView.isHidden = false
         }
@@ -91,12 +101,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if articles.count > 0 {
+
             let selectedCell = articles[indexPath.item]
-            ///Здесь создаем экземпляр контроллера для перехода на экран со статьей
-            //let articleVC =
-            //articleVC.article = selectedCell
-            //articleVC.modalPresentationStyle = .pageSheet
-            //present(articleVC, animated: true, completion: nil)
+            //Здесь создаем экземпляр контроллера для перехода на экран со статьей
+            let articleVC = ArticleViewController(article: selectedCell)
+            articleVC.article = selectedCell
+            articleVC.modalPresentationStyle = .fullScreen
+            present(articleVC, animated: true, completion: nil)
         }
     }
 }

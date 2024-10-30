@@ -16,10 +16,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = BrowseViewController()
-//        window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
+
+        //window.rootViewController = BookmarksViewController()
         
-        window.makeKeyAndVisible()
+//       
+//        window.rootViewController = BrowseViewController()
+//        window.rootViewController = UINavigationController(rootViewController: TabBarViewController())
+//
+//        window.makeKeyAndVisible()
+        
+        let rootViewController = TabBarViewController()
+            let navigationController = UINavigationController(rootViewController: rootViewController)
+            
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
         
         self.window = window
     }

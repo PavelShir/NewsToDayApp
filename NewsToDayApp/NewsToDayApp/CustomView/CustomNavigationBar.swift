@@ -8,8 +8,9 @@
 
 import UIKit
 
-class CustomNavigationBar: UIViewController {
+final class CustomNavigationBar: UIViewController {
     
+    //MARK: - Property
     let navigationBar = UINavigationBar()
     var textToShare = ""
     
@@ -32,7 +33,6 @@ class CustomNavigationBar: UIViewController {
         label.numberOfLines = 0
         
         return label
-        
     }()
     
    
@@ -45,7 +45,7 @@ class CustomNavigationBar: UIViewController {
     }
     
     
-    
+    //MARK: - Private Methods
     private func setupNavigationBar() {
         
         navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)

@@ -7,13 +7,13 @@
 
 import UIKit
 
-class SearchBar: UIViewController, UISearchBarDelegate {
+final class SearchBar: UIViewController, UISearchBarDelegate {
     
     let searchBar = UISearchBar()
     private var articles: [Article] = []
     private let networkManager = NetworkService.shared
     
-    
+    //MARK: - - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -23,17 +23,39 @@ class SearchBar: UIViewController, UISearchBarDelegate {
         setupSearchBar()
         setupTextField()
         setConstraints()
-        
-        
     }
+    
+    
+    //MARK: - Private Methods
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchTerm = searchBar.text, !searchTerm.isEmpty {
+            loadArticle(searchTerm)
+        }
+    }
+    
+    private func loadArticle(_ text: String) {
+        
+        networkManager.fetchSearch(with: text) { [unowned self] result in
+            switch result {
+            case .success(let article):
+                self.articles = article
+                self.presentSearchScreen()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    //MARK: - Setup UI
     
     private func setupSearchBar() {
         searchBar.delegate = self
         searchBar.searchTextField.translatesAutoresizingMaskIntoConstraints = false
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.backgroundImage = UIImage()
-        searchBar.tintColor = .white
-        searchBar.barTintColor = .white
+        searchBar.tintColor = .black
         
         view.addSubview(searchBar)
     }
@@ -66,29 +88,11 @@ class SearchBar: UIViewController, UISearchBarDelegate {
         ])
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let searchTerm = searchBar.text, !searchTerm.isEmpty {
-            loadArticle(searchTerm)
-        }
-    }
-    
-    private func loadArticle(_ text: String) {
-        
-        networkManager.fetchSearch(with: text) { [unowned self] result in
-            switch result {
-            case .success(let article):
-                self.articles = article
-                self.presentSearchScreen()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
+   
     private func presentSearchScreen() {
         let searchResultVC = SearchViewController()
         searchResultVC.articles = articles
-        searchResultVC.modalPresentationStyle = .formSheet
+        searchResultVC.modalPresentationStyle = .pageSheet
         present(searchResultVC, animated: true, completion: nil)
     }
 }
