@@ -29,7 +29,36 @@ final class AuthManager {
                 return
             }
 
-            completion(.success(()))
+            guard let userID = authResult?.user.uid else {
+                completion(.failure(
+                    NSError(
+                        domain: "AuthError",
+                        code: -1,
+                        userInfo: [NSLocalizedDescriptionKey: "Invalid user ID"]
+                    )
+                ))
+                return
+            }
+
+            FirestoreManager.shared.saveUserData(userID: userID, username: username) { saveResult in
+                switch saveResult {
+                case .success:
+                    // Пользователь успешно зарегистрирован и данные сохранены
+                    // Разлогиниваем пользователя
+                    self.logout { logoutResult in
+                        switch logoutResult {
+                        case .success:
+                            completion(.success(()))
+                        case .failure(let error):
+                            completion(.failure(error))
+                        }
+                    }
+                case .failure(let error):
+                    self.logout { _ in
+                        completion(.failure(error))
+                    }
+                }
+            }
         }
     }
 
@@ -61,3 +90,4 @@ final class AuthManager {
         }
     }
 }
+

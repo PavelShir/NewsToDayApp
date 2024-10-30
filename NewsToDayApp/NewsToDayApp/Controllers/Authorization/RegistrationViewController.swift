@@ -285,24 +285,34 @@ private extension RegistrationViewController {
             let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty,
             let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty
-        else { return }
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                print("Ошибка регистрации: \(error.localizedDescription)")
-                return
-            }
+        else {
+            showAlert(title: "Ошибка", message: "Пожалуйста, заполните все поля.")
+            return
+        }
 
-            if let uid = authResult?.user.uid {
-                let db = Firestore.firestore()
-                db.collection("users").document(uid).setData([
-                    "username": username,
-                ]) { error in
-                    if let error = error {
-                        print("Ошибка сохранения username: \(error.localizedDescription)")
-                    } else {
-                        print("Пользователь успешно зарегистрирован и username сохранен")
-                        //TODO: Перейти на главный экран или другое действие
+        guard password == repeatPassword else {
+            showAlert(title: "Ошибка", message: "Пароли не совпадают.")
+            return
+        }
+
+        // Показать индикатор загрузки
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+
+        AuthManager.shared.register(email: email, password: password, username: username) { [weak self] result in
+            DispatchQueue.main.async {
+                activityIndicator.stopAnimating()
+                activityIndicator.removeFromSuperview()
+
+                switch result {
+                case .success:
+                    self?.showAlert(title: "Успех", message: "Аккаунт успешно создан!") {
+                        self?.handleSignInButton()
                     }
+                case .failure(let error):
+                    self?.showAlert(title: "Ошибка", message: error.localizedDescription)
                 }
             }
         }

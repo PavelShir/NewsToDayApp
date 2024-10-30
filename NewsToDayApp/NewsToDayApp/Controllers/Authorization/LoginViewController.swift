@@ -268,29 +268,24 @@ private extension LoginViewController {
     func handleSignInButton() {
         guard
             let windowScene = view.window?.windowScene,
-            let sceneDelegate = windowScene.delegate as? SceneDelegate,
-            let email = emailTextField.text, !email.isEmpty,
-            let password = passwordTextField.text, !password.isEmpty
+            let sceneDelegate = windowScene.delegate as? SceneDelegate
         else { return }
 
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                print("Ошибка входа: \(error.localizedDescription)")
-                return
-            }
+        guard
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty
+        else {
+            showAlert(title: "Ошибка", message: "Пожалуйста, заполните все поля.")
+            return
+        }
 
-            // Получение username из Firestore при входе
-            if let uid = authResult?.user.uid {
-                let db = Firestore.firestore()
-                db.collection("users").document(uid).getDocument { document, error in
-                    if let document = document, document.exists {
-                        let username = document.data()?["username"] as? String ?? "No username"
-                        print("Добро пожаловать, \(username)")
-                        //TODO: Перейти на главный экран или другое действие
-                    } else {
-                        print("Ошибка получения username: \(error?.localizedDescription ?? "Неизвестная ошибка")")
-                    }
-                }
+        AuthManager.shared.login(email: email, password: password) { [weak self] result in
+            switch result {
+            case .success:
+                let vc = OnboardingViewController()
+                sceneDelegate.window?.rootViewController = vc
+            case .failure(let error):
+                self?.showAlert(title: "Ошибка", message: error.localizedDescription)
             }
         }
     }
