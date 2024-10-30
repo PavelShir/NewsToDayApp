@@ -14,6 +14,7 @@ class TermsAndConditionsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupNavBar()
         setupView()
         setupConstraints()
@@ -55,5 +56,5 @@ class TermsAndConditionsVC: UIViewController {
     }
     
 }
-@available(iOS 18.0, *)
+@available(iOS 17.0, *)
 #Preview { UINavigationController(rootViewController: TermsAndConditionsVC())}

@@ -84,11 +84,13 @@ class ProfileViewController: UIViewController {
 //MARK: - buttons actions
     
     @objc func languageTapped(_ sender: UIButton) {
-        
+        let languageVC = LanguageVC()
+        navigationController?.pushViewController(languageVC, animated: true)
     }
     
     @objc func termsTapped(_ sender: UIButton) {
-        
+        let termsVC = TermsAndConditionsVC()
+        navigationController?.pushViewController(termsVC, animated: true)
     }
     
     @objc func signOutTapped(_ sender: UIButton) {
