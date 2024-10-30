@@ -17,6 +17,9 @@
 		0F11F4342CD1820A009DD9B7 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0F11F4332CD1820A009DD9B7 /* FirebaseCore */; };
 		0F11F4362CD1820A009DD9B7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0F11F4352CD1820A009DD9B7 /* FirebaseFirestore */; };
 		0F11F4382CD18281009DD9B7 /* GoogleService-Info.plist.dist in Resources */ = {isa = PBXBuildFile; fileRef = 0F11F4372CD18281009DD9B7 /* GoogleService-Info.plist.dist */; };
+		0F11F43F2CD24D60009DD9B7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F43E2CD24D52009DD9B7 /* AuthManager.swift */; };
+		0F11F4412CD24D6F009DD9B7 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4402CD24D69009DD9B7 /* FirestoreManager.swift */; };
+		0F11F4432CD25B73009DD9B7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4422CD25B6A009DD9B7 /* UIViewController+Extension.swift */; };
 		0F838FD42CC8F5600028D301 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F838FD32CC8F5410028D301 /* ArticleViewController.swift */; };
 		0F838FD92CC8F76A0028D301 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F838FD82CC8F7640028D301 /* ArticleView.swift */; };
 		0F8390432CC95C500028D301 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F8390422CC95C500028D301 /* Config.plist */; };
@@ -31,7 +34,6 @@
 		31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988A32CC55879008B4517 /* ProfileViewController.swift */; };
 		31F988BC2CD169E1008B4517 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 31F988BB2CD169E1008B4517 /* Kingfisher */; };
 		31F988BF2CD169E9008B4517 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 31F988BE2CD169E9008B4517 /* Alamofire */; };
-		31F988C12CD169E9008B4517 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 31F988C02CD169E9008B4517 /* AlamofireDynamic */; };
 		31F988C32CD1713A008B4517 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988C22CD1713A008B4517 /* User.swift */; };
 		31F988C52CD19200008B4517 /* ProfileButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F988C42CD19200008B4517 /* ProfileButtons.swift */; };
 		7965307A2CCB904A00FF3C5B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796530792CCB904A00FF3C5B /* Constants.swift */; };
@@ -53,6 +55,9 @@
 		0F11F4172CD1179A009DD9B7 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		0F11F41B2CD117B4009DD9B7 /* UITextField+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extenstion.swift"; sourceTree = "<group>"; };
 		0F11F4372CD18281009DD9B7 /* GoogleService-Info.plist.dist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "GoogleService-Info.plist.dist"; sourceTree = "<group>"; };
+		0F11F43E2CD24D52009DD9B7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		0F11F4402CD24D69009DD9B7 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		0F11F4422CD25B6A009DD9B7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		0F838FD32CC8F5410028D301 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		0F838FD82CC8F7640028D301 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		0F8390422CC95C500028D301 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
@@ -87,7 +92,6 @@
 			files = (
 				31F988BC2CD169E1008B4517 /* Kingfisher in Frameworks */,
 				0F11F4342CD1820A009DD9B7 /* FirebaseCore in Frameworks */,
-				31F988C12CD169E9008B4517 /* AlamofireDynamic in Frameworks */,
 				31F988BF2CD169E9008B4517 /* Alamofire in Frameworks */,
 				0F11F4322CD1820A009DD9B7 /* FirebaseAuth in Frameworks */,
 				0F11F4362CD1820A009DD9B7 /* FirebaseFirestore in Frameworks */,
@@ -100,6 +104,7 @@
 		0F11F4062CCEB63B009DD9B7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0F11F4422CD25B6A009DD9B7 /* UIViewController+Extension.swift */,
 				0F11F41B2CD117B4009DD9B7 /* UITextField+Extenstion.swift */,
 			);
 			path = Extensions;
@@ -112,6 +117,15 @@
 				0F11F4172CD1179A009DD9B7 /* RegistrationViewController.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		0F11F43D2CD24D4A009DD9B7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0F11F4402CD24D69009DD9B7 /* FirestoreManager.swift */,
+				0F11F43E2CD24D52009DD9B7 /* AuthManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		0F838FD52CC8F6410028D301 /* Article */ = {
@@ -153,6 +167,7 @@
 		31F988842CC554D4008B4517 /* NewsToDayApp */ = {
 			isa = PBXGroup;
 			children = (
+				0F11F43D2CD24D4A009DD9B7 /* Managers */,
 				0F11F4062CCEB63B009DD9B7 /* Extensions */,
 				CEB31F582CC6A6BD00564766 /* CustomView */,
 				CEB31F482CC6A30A00564766 /* NetworkManager */,
@@ -308,8 +323,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE76F9BE2CCBD2C00030365E /* SearchViewController.swift in Sources */,
+				0F11F43F2CD24D60009DD9B7 /* AuthManager.swift in Sources */,
 				CE63BF9C2CC8A120000A82F5 /* CustomNavigationBar.swift in Sources */,
 				31F988A22CC5586A008B4517 /* BookmarksViewController.swift in Sources */,
+				0F11F4412CD24D6F009DD9B7 /* FirestoreManager.swift in Sources */,
 				7965307C2CCE8EF000FF3C5B /* CategoriesSetting.swift in Sources */,
 				CEB31F472CC6A30300564766 /* NetworkManager.swift in Sources */,
 				CEB31F572CC6A6B800564766 /* CustomCell.swift in Sources */,
@@ -323,6 +340,7 @@
 				0F11F4152CD108D5009DD9B7 /* OnboardingModel.swift in Sources */,
 				CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */,
 				31F9889C2CC5582B008B4517 /* TabBarViewController.swift in Sources */,
+				0F11F4432CD25B73009DD9B7 /* UIViewController+Extension.swift in Sources */,
 				0F11F4122CD108A4009DD9B7 /* CustomPageControl.swift in Sources */,
 				0F11F41C2CD117B4009DD9B7 /* UITextField+Extenstion.swift in Sources */,
 				0F11F4192CD1179A009DD9B7 /* LoginViewController.swift in Sources */,
