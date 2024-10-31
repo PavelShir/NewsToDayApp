@@ -55,19 +55,19 @@ final class SearchBar: UIViewController, UISearchBarDelegate {
         searchBar.searchTextField.translatesAutoresizingMaskIntoConstraints = false
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.backgroundImage = UIImage()
-        searchBar.tintColor = .black
+        searchBar.tintColor = .brandGreyLight
         
         view.addSubview(searchBar)
     }
     
     private func setupTextField() {
         if let searchBarTextField = searchBar.value(forKey: "searchField") as? UITextField {
-            searchBarTextField.backgroundColor = .systemGray6
-            searchBarTextField.textColor = .black
+            searchBarTextField.backgroundColor = .brandGreyLighter
+            searchBarTextField.textColor = .brandBlackDark
             searchBarTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [.foregroundColor: UIColor.lightGray])
             searchBarTextField.layer.cornerRadius = 12
             if let glassIconView = searchBarTextField.leftView as? UIImageView {
-                glassIconView.tintColor = .darkGray
+                glassIconView.tintColor = .brandBlackLight
             }
         }
     }

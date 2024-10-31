@@ -28,9 +28,9 @@ final class CustomCell: UITableViewCell {
     
     private let customCellImage = UIImageView.makeImage(cornerRadius: 20)
     
-    private let customCellCaption = UILabel.makeLabelForCells(font: UIFont.systemFont(ofSize: 16), textColor: .systemGray)
+    private let customCellCaption = UILabel.makeLabelForCells(font: UIFont.systemFont(ofSize: 16), textColor: .brandBlackLighter)
     
-    private lazy var customCellTitle = UILabel.makeLabelForCells(font: UIFont.systemFont(ofSize: 20), textColor: .black)
+    private lazy var customCellTitle = UILabel.makeLabelForCells(font: UIFont.systemFont(ofSize: 20), textColor: .brandBlackDark)
     
     let options: KingfisherOptionsInfo = [
         .cacheOriginalImage

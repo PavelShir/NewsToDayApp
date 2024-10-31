@@ -21,7 +21,7 @@ class EmptyStateView: UIView {
     private lazy var emptyLabel: UILabel = {
         let label = UILabel()
         label.text = "You haven't saved any articles yet. Start reading and bookmarking them now"
-        label.textColor = .systemGray
+        label.textColor = .brandBlackDark
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18)
         label.numberOfLines = 0
