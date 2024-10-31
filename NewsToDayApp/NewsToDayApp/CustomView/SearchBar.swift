@@ -7,13 +7,13 @@
 
 import UIKit
 
-class SearchBar: UIViewController, UISearchBarDelegate {
+final class SearchBar: UIViewController, UISearchBarDelegate {
     
     let searchBar = UISearchBar()
     private var articles: [Article] = []
     private let networkManager = NetworkService.shared
     
-    
+    //MARK: - - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -23,48 +23,10 @@ class SearchBar: UIViewController, UISearchBarDelegate {
         setupSearchBar()
         setupTextField()
         setConstraints()
-        
-        
     }
     
-    private func setupSearchBar() {
-        searchBar.delegate = self
-        searchBar.searchTextField.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.backgroundImage = UIImage()
-        searchBar.tintColor = .white
-        searchBar.barTintColor = .white
-        
-        view.addSubview(searchBar)
-    }
     
-    private func setupTextField() {
-        if let searchBarTextField = searchBar.value(forKey: "searchField") as? UITextField {
-            searchBarTextField.backgroundColor = .systemGray6
-            searchBarTextField.textColor = .black
-            searchBarTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [.foregroundColor: UIColor.lightGray])
-            searchBarTextField.layer.cornerRadius = 12
-            if let glassIconView = searchBarTextField.leftView as? UIImageView {
-                glassIconView.tintColor = .darkGray
-            }
-        }
-    }
-    
-    private func setConstraints() {
-        NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: 56),
-            searchBar.topAnchor.constraint(equalTo: view.topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            searchBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            searchBar.searchTextField.topAnchor.constraint(equalTo: searchBar.topAnchor),
-            searchBar.searchTextField.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
-            searchBar.searchTextField.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor),
-            searchBar.searchTextField.bottomAnchor.constraint(equalTo: searchBar.bottomAnchor)
-            
-        ])
-    }
+    //MARK: - Private Methods
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchTerm = searchBar.text, !searchTerm.isEmpty {
@@ -85,10 +47,52 @@ class SearchBar: UIViewController, UISearchBarDelegate {
         }
     }
     
+    
+    //MARK: - Setup UI
+    
+    private func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.searchTextField.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.tintColor = .brandGreyLight
+        
+        view.addSubview(searchBar)
+    }
+    
+    private func setupTextField() {
+        if let searchBarTextField = searchBar.value(forKey: "searchField") as? UITextField {
+            searchBarTextField.backgroundColor = .brandGreyLighter
+            searchBarTextField.textColor = .brandBlackDark
+            searchBarTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [.foregroundColor: UIColor.lightGray])
+            searchBarTextField.layer.cornerRadius = 12
+            if let glassIconView = searchBarTextField.leftView as? UIImageView {
+                glassIconView.tintColor = .brandBlackLight
+            }
+        }
+    }
+    
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            view.heightAnchor.constraint(equalToConstant: 56),
+            searchBar.topAnchor.constraint(equalTo: view.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            searchBar.searchTextField.topAnchor.constraint(equalTo: searchBar.topAnchor),
+            searchBar.searchTextField.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
+            searchBar.searchTextField.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor),
+            searchBar.searchTextField.bottomAnchor.constraint(equalTo: searchBar.bottomAnchor)
+            
+        ])
+    }
+    
+   
     private func presentSearchScreen() {
         let searchResultVC = SearchViewController()
         searchResultVC.articles = articles
-        searchResultVC.modalPresentationStyle = .formSheet
+        searchResultVC.modalPresentationStyle = .pageSheet
         present(searchResultVC, animated: true, completion: nil)
     }
 }

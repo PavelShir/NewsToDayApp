@@ -9,14 +9,14 @@
 import Foundation
 
 // MARK: - NewsResponse
-struct NewsResponse: Codable {
+struct NewsResponse: Codable, Equatable {
     let status: String
     let totalResults: Int
     let articles: [Article]
 }
 
 // MARK: - Article
-struct Article: Codable {
+struct Article: Codable, Equatable {
     let source: Source
     let author: String?
     let title: String
@@ -28,7 +28,7 @@ struct Article: Codable {
 }
 
 // MARK: - Source
-struct Source: Codable {
+struct Source: Codable, Equatable {
     let id: String?
     let name: String
 }
