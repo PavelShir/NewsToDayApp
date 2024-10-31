@@ -20,7 +20,7 @@ class TabBarViewController: UITabBarController {
             generateVC(viewController: BrowseViewController(), image: UIImage.home),
             generateVC(viewController: CategoriesViewController(), image: UIImage.apps),
             generateVC(viewController: UINavigationController(rootViewController: BookmarksViewController()), image: UIImage.bookmark),
-            generateVC(viewController: ProfileViewController(), image: UIImage.profile)
+            generateVC(viewController: UINavigationController(rootViewController:ProfileViewController()), image: UIImage.profile)
         ]
     }
 
