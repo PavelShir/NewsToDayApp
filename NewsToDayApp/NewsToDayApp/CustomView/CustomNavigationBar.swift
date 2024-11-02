@@ -9,7 +9,7 @@
 import UIKit
 
 class CustomNavigationBar: UIViewController {
-    
+
     let navigationBar = UINavigationBar()
     var textToShare = ""
     
@@ -32,10 +32,10 @@ class CustomNavigationBar: UIViewController {
         label.numberOfLines = 0
         
         return label
-        
     }()
     
-   
+    
+   //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +44,7 @@ class CustomNavigationBar: UIViewController {
         
     }
     
-    
-    
+    //MARK: - Private Methods
     private func setupNavigationBar() {
         
         navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
@@ -82,7 +81,7 @@ class CustomNavigationBar: UIViewController {
             
             subTitleLabel.topAnchor.constraint(equalTo: titleOfLabel.bottomAnchor, constant: 12),
             subTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
-            
         ])
     }
 }
+

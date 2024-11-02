@@ -8,6 +8,8 @@
 import UIKit
 import Kingfisher
 
+
+
 class CollectionCell: UICollectionViewCell {
     
     
@@ -16,12 +18,12 @@ class CollectionCell: UICollectionViewCell {
     //MARK: - Private Property
     
     private let favoriteManager = FavoriteManager.shared
-    
     private let imageCollectionCell = UIImageView.makeImage(cornerRadius: 12)
     private let labelTitle = UILabel.makeLabelForCells(
         font: UIFont.systemFont(ofSize: 20),
         textColor: .white
     )
+    private var isFavorite: Bool = false
     
     private let labelCaption = UILabel.makeLabelForCells(
         font: UIFont.systemFont(ofSize: 16),
@@ -42,6 +44,7 @@ class CollectionCell: UICollectionViewCell {
         button.setImage(.bookmarkOutline, for: .normal)
         button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     
@@ -55,23 +58,28 @@ class CollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         setupViews()
         setupConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
     @objc func favoriteButtonTapped() {
+        
         guard let article = currentArticle else { return }
         
         if liked {
             favoriteManager.removeFromFavorites(article: article)
             liked = false
-            favoriteButton.setImage(.bookmarkFill, for: .normal)
+            favoriteButton.setImage(.bookmarkOutline, for: .normal)
+            
         } else {
             favoriteManager.addToFavorites(article: article)
             liked = true
-            favoriteButton.setImage(.bookmarkOutline, for: .normal)
+            favoriteButton.setImage(.bookmarkFill, for: .normal)
         }
     }
     
@@ -83,18 +91,22 @@ class CollectionCell: UICollectionViewCell {
         imageCollectionCell.addSubview(darkOverlayView)
         imageCollectionCell.addSubview(labelTitle)
         imageCollectionCell.addSubview(labelCaption)
-        imageCollectionCell.addSubview(favoriteButton)
+        contentView.addSubview(favoriteButton)
     }
     
-    func setupCell(_ data: Article) {
+    func setupCell(_ data: Article, categoryName: String) {
         DispatchQueue.main.async {
-            self.labelCaption.text = data.description
+            self.labelCaption.text = categoryName
             self.labelTitle.text = data.title
             self.imageCollectionCell.kf.setImage(
                 with: URL(string: data.urlToImage ?? "placeholder"),
                 options: self.options
             )
             self.currentArticle = data
+            
+            self.liked = self.favoriteManager.isFavorite(article: data)
+            let buttonImage = self.liked ? UIImage.bookmarkFill : UIImage.bookmarkOutline
+            self.favoriteButton.setImage(buttonImage, for: .normal)
         }
     }
     

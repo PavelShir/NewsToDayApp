@@ -54,6 +54,8 @@
 		CEB31F4C2CC6A33E00564766 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F4B2CC6A33E00564766 /* Model.swift */; };
 		CEB31F572CC6A6B800564766 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB31F562CC6A6B400564766 /* CustomCell.swift */; };
 		CEDE320D2CD3E74600F02793 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEDE320C2CD3E74600F02793 /* Kingfisher */; };
+		CEDE320F2CD508EF00F02793 /* LabelCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE320E2CD508EC00F02793 /* LabelCategoriesCell.swift */; };
+		CEDE32112CD50D4000F02793 /* LabelCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE32102CD50D3E00F02793 /* LabelCategoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +103,8 @@
 		CEB31F462CC6A2FD00564766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CEB31F4B2CC6A33E00564766 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = NewsToDayApp/Models/Model.swift; sourceTree = SOURCE_ROOT; };
 		CEB31F562CC6A6B400564766 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		CEDE320E2CD508EC00F02793 /* LabelCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCategoriesCell.swift; sourceTree = "<group>"; };
+		CEDE32102CD50D3E00F02793 /* LabelCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,7 @@
 		CE6D628A2CD3E1F5001E9087 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CEDE320E2CD508EC00F02793 /* LabelCategoriesCell.swift */,
 				CE6D628B2CD3E1FB001E9087 /* CollectionCell.swift */,
 				CEB31F562CC6A6B400564766 /* CustomCell.swift */,
 			);
@@ -277,6 +282,7 @@
 		CEB31F582CC6A6BD00564766 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				CEDE32102CD50D3E00F02793 /* LabelCategoryView.swift */,
 				CE6D62932CD3E562001E9087 /* CategoryCollectionView.swift */,
 				0F11F4102CD108A4009DD9B7 /* CustomPageControl.swift */,
 				0F11F4112CD108A4009DD9B7 /* OnboardingVewCell.swift */,
@@ -381,8 +387,10 @@
 				7965307C2CCE8EF000FF3C5B /* CategoriesSetting.swift in Sources */,
 				0F8390662CCFD74E0028D301 /* LanguageVC.swift in Sources */,
 				CEB31F472CC6A30300564766 /* NetworkManager.swift in Sources */,
+				CEDE320F2CD508EF00F02793 /* LabelCategoriesCell.swift in Sources */,
 				CEB31F572CC6A6B800564766 /* CustomCell.swift in Sources */,
 				31F9889E2CC55851008B4517 /* BrowseViewController.swift in Sources */,
+				CEDE32112CD50D4000F02793 /* LabelCategoryView.swift in Sources */,
 				31F988C52CD19200008B4517 /* ProfileButtons.swift in Sources */,
 				CE6D628C2CD3E1FF001E9087 /* CollectionCell.swift in Sources */,
 				CE76F96B2CC9FBCF0030365E /* EmptyStateView.swift in Sources */,

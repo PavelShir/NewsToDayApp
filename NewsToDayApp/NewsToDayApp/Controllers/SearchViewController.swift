@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 final class SearchViewController: UIViewController {
     
     private let searchTableView = UITableView()
@@ -37,7 +35,7 @@ final class SearchViewController: UIViewController {
         
         emptyStateView.isHidden = !articles.isEmpty
         view.addSubview(emptyStateView)
-        
+       
         setConstraints()
     }
     
@@ -65,11 +63,12 @@ final class SearchViewController: UIViewController {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            
+          
             navigationBar.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             navigationBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navigationBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.view.heightAnchor.constraint(equalToConstant: 70),
+            
             
             searchTableView.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor),
             searchTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -110,9 +109,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             let selectedCell = articles[indexPath.item]
             //Здесь создаем экземпляр контроллера для перехода на экран со статьей
             let articleVC = ArticleViewController(article: selectedCell)
-            articleVC.article = selectedCell
-            articleVC.modalPresentationStyle = .fullScreen
-            present(articleVC, animated: true, completion: nil)
+            
+            if let navigationController = navigationController {
+                navigationController.pushViewController(articleVC, animated: true)
+            } else {
+                print("Ошибка: NavigationController не найден.")
+            }
+            
+            
+            
+//            let articleVC = ArticleViewController(article: selectedCell)
+//        
+//            articleVC.article = selectedCell
+//            articleVC.modalPresentationStyle = .fullScreen
+//            present(articleVC, animated: true, completion: nil)
         }
     }
 }
