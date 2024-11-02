@@ -45,7 +45,6 @@ final class BookmarksViewController: UIViewController {
         setupTableView()
         setupEmptyStateView()
         setupConstraints()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +79,6 @@ final class BookmarksViewController: UIViewController {
             case .success(let article):
                 self.articles = article
                 self.tableView.reloadData()
-                
                 self.updateView()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -100,7 +98,7 @@ final class BookmarksViewController: UIViewController {
         view.addSubview(navigationBar.view)
         navigationBar.didMove(toParent: self)
     }
-    
+//    
     
     private func setupTableView() {
         tableView.dataSource = self
@@ -120,12 +118,12 @@ final class BookmarksViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            navigationBar.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navigationBar.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
             navigationBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navigationBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            navigationBar.view.heightAnchor.constraint(equalToConstant: 50),
+            navigationBar.view.heightAnchor.constraint(equalToConstant: 60),
             
-            
+           
             tableView.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor, constant: 40),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
@@ -160,13 +158,23 @@ extension BookmarksViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if articles.count > 0 {
+            
             let selectedCell = articles[indexPath.item]
             ///Здесь создаем экземпляр контроллера для перехода на экран со статьей
             
             let articleVC = ArticleViewController(article: selectedCell)
-            articleVC.article = selectedCell
-            articleVC.modalPresentationStyle = .fullScreen
-            present(articleVC, animated: true, completion: nil)
+            
+            
+            if let navigationController = navigationController {
+                navigationController.pushViewController(articleVC, animated: true)
+            } else {
+                print("Ошибка: NavigationController не найден.")
+            }
+            
+//            
+//            articleVC.article = selectedCell
+//            articleVC.modalPresentationStyle = .fullScreen
+//            present(articleVC, animated: true, completion: nil)
         }
     }
     

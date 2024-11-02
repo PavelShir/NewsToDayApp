@@ -14,15 +14,23 @@ final class ArticleViewController: UIViewController {
     var favoriteManager = FavoriteManager.shared
     
     var liked: Bool = false
-    
+   
+
     let imageView = UIImageView()
     let labelTitle = UILabel()
     let labelDescription = UILabel()
     let labelAuthor = UILabel()
     let textView = UITextView()
     let buttonBack = UIButton()
-    let buttonBookmark = UIButton()
+    var buttonBookmark = UIButton()
     let buttonShared = UIButton()
+    
+    private let darkOverlayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     init(article: Article) {
         self.article = article
@@ -36,6 +44,7 @@ final class ArticleViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -44,16 +53,26 @@ final class ArticleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.navigationController != nil {
+                print("ArticleViewController загружен в UINavigationController")
+            } else {
+                print("ArticleViewController НЕ загружен в UINavigationController")
+            }
+        
         print(article)
         setupNavBar()
         setupView()
         setupConstraints()
         setupLikedState()
         configuration()
+        
     }
+   
     
     private func setupView() {
         view.addSubview(imageView)
+        imageView.addSubview(darkOverlayView)
         view.addSubview(buttonShared)
         view.addSubview(labelTitle)
         view.addSubview(labelDescription)
@@ -77,6 +96,7 @@ final class ArticleViewController: UIViewController {
         buttonBookmark.setImage(UIImage.bookmarkNavBar, for: .normal)
         buttonBookmark.addTarget(self, action: #selector (bookmarkTapped), for: .touchUpInside)
         
+       
         buttonShared.setImage(UIImage.share, for: .normal)
         buttonShared.addTarget(self, action: #selector (sharedTapped), for: .touchUpInside)
         buttonShared.translatesAutoresizingMaskIntoConstraints = false
@@ -137,10 +157,9 @@ final class ArticleViewController: UIViewController {
     
     private func setupLikedState() {
         liked = favoriteManager.isFavorite(article: article)
-        let bookmarkImage = liked ? UIImage(resource: .bookmarkFill) : UIImage(resource: .bookmarkOutline)
+        let bookmarkImage = liked ? UIImage.bookmarkOutline : UIImage.bookmarkFill
         buttonBookmark.setImage(bookmarkImage, for: .normal)
     }
-    
     
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
@@ -150,14 +169,15 @@ final class ArticleViewController: UIViewController {
     }
     
     @objc private func bookmarkTapped() {
+       
         if liked {
             favoriteManager.removeFromFavorites(article: article)
             liked = false
-            buttonBookmark.setImage(.bookmarkFill, for: .normal)
+            buttonBookmark.setImage(.bookmarkOutline, for: .normal)
         } else {
             favoriteManager.addToFavorites(article: article)
             liked = true
-            buttonBookmark.setImage(.bookmarkOutline, for: .normal)
+            buttonBookmark.setImage(.bookmarkFill, for: .normal)
         }
     }
     
@@ -190,6 +210,11 @@ final class ArticleViewController: UIViewController {
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/2.2),
+            
+            darkOverlayView.topAnchor.constraint(equalTo: imageView.topAnchor),
+            darkOverlayView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            darkOverlayView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            darkOverlayView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
             
             buttonShared.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             buttonShared.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),

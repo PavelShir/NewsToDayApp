@@ -22,6 +22,7 @@ final class FavoriteManager {
     }
     
     
+    
     var bookmarksArray: [Article] {
         get {
             return favoriteArticles
@@ -49,7 +50,7 @@ final class FavoriteManager {
         return favoriteArticles.contains(article)
     }
     
-
+    
     private func saveFavorites() {
         do {
             let encodedData = try JSONEncoder().encode(favoriteArticles)
@@ -58,6 +59,7 @@ final class FavoriteManager {
             print("Ошибка при сохранении закладок: \(error)")
         }
     }
+    
     
     private func loadFavorites() {
         guard let data = defaults.data(forKey: bookmarksKey) else { return }
@@ -69,3 +71,5 @@ final class FavoriteManager {
         }
     }
 }
+
+

@@ -131,6 +131,7 @@ class ProfileViewController: UIViewController {
             navigationBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navigationBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.view.heightAnchor.constraint(equalToConstant: 50),
+
             
             fotoImage.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor, constant: 30),
             fotoImage.widthAnchor.constraint(equalToConstant: 72),

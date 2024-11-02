@@ -14,10 +14,13 @@ protocol CategoryCollectionViewDelegate: AnyObject {
 
 final class CategoryCollectionView: UIView {
     
+    //MARK: - Property
     var collectionView: UICollectionView!
     private let networkManager = NetworkService.shared
     var favoriteManager = FavoriteManager.shared
     weak var delegate: CategoryCollectionViewDelegate?
+   
+    var selectedCategoryName: String = ""
     
     var articles: [Article] = [] {
         didSet {
@@ -28,27 +31,27 @@ final class CategoryCollectionView: UIView {
     }
     
     
-//    func loadArticles() {
-//        networkManager.fetchAF { [weak self] result in
-//            switch result {
-//            case .success(let articles):
-//                self?.articles = articles
-//            case .failure(let error):
-//                print("Error loading articles: \(error)")
-//            }
-//        }
-//    }
-    
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCollection()
         setupConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc private func handleFavoritesUpdate(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     //MARK: - Private Property
     
     private func configureCollection() {
@@ -76,7 +79,9 @@ final class CategoryCollectionView: UIView {
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return articles.count
     }
@@ -87,11 +92,13 @@ extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewData
         }
         
         let selectedNews = articles[indexPath.row]
+        let categoryName =  selectedCategoryName
         
         cell.liked = favoriteManager.bookmarksArray.contains(selectedNews)
         cell.favoriteButton.setImage(cell.liked ? .bookmarkFill : .bookmarkOutline, for: .normal)
-        cell.setupCell(selectedNews)
-        
+        cell.setupCell(selectedNews, categoryName: categoryName)
+       
+    
         return cell
     }
     
