@@ -5,6 +5,7 @@
 //  Created by Churkin Vitaly on 30.10.2024.
 //
 
+import UIKit
 import Foundation
 import FirebaseAuth
 

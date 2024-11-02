@@ -107,7 +107,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if articles.count > 0 {
             
             let selectedCell = articles[indexPath.item]
-            //Здесь создаем экземпляр контроллера для перехода на экран со статьей
             let articleVC = ArticleViewController(article: selectedCell)
             
             if let navigationController = navigationController {
@@ -126,3 +125,4 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
