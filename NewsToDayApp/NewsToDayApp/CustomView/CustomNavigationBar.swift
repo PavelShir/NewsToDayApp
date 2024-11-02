@@ -16,9 +16,9 @@ class CustomNavigationBar: UIViewController {
     lazy var titleOfLabel: UILabel = {
         let label = UILabel()
         label.text = "Screen Name"
-        label.textColor = .black
+        label.textColor = .brandBlackDark
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         return label
     }()
     
@@ -26,9 +26,9 @@ class CustomNavigationBar: UIViewController {
     lazy var subTitleLabel = {
         let label = UILabel()
         label.text = ""
-        label.textColor = .systemGray2
+        label.textColor = .brandBlackLighter
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.numberOfLines = 0
         
         return label

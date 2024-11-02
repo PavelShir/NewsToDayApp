@@ -10,7 +10,11 @@ import Kingfisher
 
 final class ArticleViewController: UIViewController {
     
-    let article: Article
+    var article: Article
+    var favoriteManager = FavoriteManager.shared
+    
+    var liked: Bool = false
+    
     let imageView = UIImageView()
     let labelTitle = UILabel()
     let labelDescription = UILabel()
@@ -44,9 +48,10 @@ final class ArticleViewController: UIViewController {
         setupNavBar()
         setupView()
         setupConstraints()
+        setupLikedState()
         configuration()
     }
- 
+    
     private func setupView() {
         view.addSubview(imageView)
         view.addSubview(buttonShared)
@@ -103,20 +108,20 @@ final class ArticleViewController: UIViewController {
         let autor = "Author".localized()
         let attributes1 = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .semibold)
-                ]
+        ]
         let attributedText1 = NSMutableAttributedString(string: nameAuthor, attributes: attributes1)
-
+        
         let attributes2 = [
             NSAttributedString.Key.foregroundColor: UIColor.gray,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .regular)
-                ]
+        ]
         let attributedText2 = NSMutableAttributedString(string: autor, attributes: attributes2)
-
+        
         let combinedAttributedString = NSMutableAttributedString()
-                combinedAttributedString.append(attributedText1)
-                combinedAttributedString.append(NSAttributedString(string: "\n"))
-                combinedAttributedString.append(attributedText2)
-
+        combinedAttributedString.append(attributedText1)
+        combinedAttributedString.append(NSAttributedString(string: "\n"))
+        combinedAttributedString.append(attributedText2)
+        
         labelAuthor.attributedText = combinedAttributedString
         labelAuthor.translatesAutoresizingMaskIntoConstraints = false
         
@@ -129,6 +134,14 @@ final class ArticleViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = article.content ?? "No content".localized()
     }
+    
+    private func setupLikedState() {
+        liked = favoriteManager.isFavorite(article: article)
+        let bookmarkImage = liked ? UIImage(resource: .bookmarkFill) : UIImage(resource: .bookmarkOutline)
+        buttonBookmark.setImage(bookmarkImage, for: .normal)
+    }
+    
+    
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
@@ -138,6 +151,20 @@ final class ArticleViewController: UIViewController {
     @objc private func sharedTapped() {
         print("sharedTapped")
     }
+    
+    @objc private func bookmarkTapped() {
+        if liked {
+            favoriteManager.removeFromFavorites(article: article)
+            liked = false
+            buttonBookmark.setImage(.bookmarkFill, for: .normal)
+        } else {
+            favoriteManager.addToFavorites(article: article)
+            liked = true
+            buttonBookmark.setImage(.bookmarkOutline, for: .normal)
+        }
+    }
+    
+    
     func setupImage() {
         let imageURL = URL(string: article.urlToImage ?? "")
         imageView.kf.indicatorType = .activity
@@ -159,14 +186,14 @@ final class ArticleViewController: UIViewController {
                 }
             }
     }
-
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/2.2),
-
+            
             buttonShared.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             buttonShared.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             
@@ -183,7 +210,7 @@ final class ArticleViewController: UIViewController {
             labelAuthor.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16),
             labelAuthor.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             labelAuthor.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-
+            
             textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             textView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
