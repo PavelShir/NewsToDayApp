@@ -13,6 +13,13 @@ class ProfileViewController: UIViewController {
     let navigationBar = CustomNavigationBar()
     private var user: UserModel?
     
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        let languageButton = ProfileButtons(title: "Language".localized(), picName: "greaterthan")
+//        termsButton.setTitle("Terms & Conditions".localized(), for: .normal)
+//        signOutButton.setTitle("Sign Out".localized(), for: .normal)
+//    }
+    
     private let fotoImage: UIImageView = {
         let fotoImage = UIImageView()
         fotoImage.contentMode = .scaleAspectFill
@@ -43,21 +50,21 @@ class ProfileViewController: UIViewController {
     }()
     
     private lazy var languageButton: UIButton = {
-        let languageButton = ProfileButtons(title: String(localized:"Language"), picName: "greaterthan")
+        let languageButton = ProfileButtons(title: "Language".localized(), picName: "greaterthan")
         languageButton.addTarget(self, action: #selector(languageTapped), for: .touchUpInside)
         
         return languageButton
     }()
     
     private lazy var termsButton: UIButton = {
-        let termsButton = ProfileButtons(title: String(localized:"Terms & Conditions"), picName: "greaterthan")
+        let termsButton = ProfileButtons(title: "Terms & Conditions".localized(), picName: "greaterthan")
         termsButton.addTarget(self, action: #selector(termsTapped), for: .touchUpInside)
         
         return termsButton
     }()
     
     private lazy var signOutButton: UIButton = {
-        let signOutButton = ProfileButtons(title: String(localized:"Sign Out"), picName: "rectangle.portrait.and.arrow.forward")
+        let signOutButton = ProfileButtons(title: "Sign Out".localized(), picName: "rectangle.portrait.and.arrow.forward")
         signOutButton.addTarget(self, action: #selector(signOutTapped), for: .touchUpInside)
         
         return signOutButton
@@ -65,16 +72,24 @@ class ProfileViewController: UIViewController {
 
     
    //MARK: - app load
-    
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool){
+        navigationController?.navigationBar.isHidden = true
+        view.setNeedsLayout()
         view.backgroundColor = .white
         setupNavBar()
         setupConstreints()
         loadUserData()
     }
+//    override func viewDidLoad() {
+//        view.setNeedsLayout()
+//        view.backgroundColor = .white
+//        setupNavBar()
+//        setupConstreints()
+//        loadUserData()
+//    }
     
     private func setupNavBar() {
-        navigationBar.titleOfLabel.text = "Profile"
+        navigationBar.titleOfLabel.text = "Profile".localized()
         navigationBar.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(navigationBar)
         view.addSubview(navigationBar.view)

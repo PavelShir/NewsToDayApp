@@ -139,13 +139,20 @@ final class LoginViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
         setupView()
         setupHierarchy()
         setupLayout()
         setupPasswordObservers()
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        setupView()
+//        setupHierarchy()
+//        setupLayout()
+//        setupPasswordObservers()
     }
 
     // MARK: - Setups
@@ -277,7 +284,7 @@ private extension LoginViewController {
             let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty
         else {
-            showAlert(title: "Ошибка", message: "Пожалуйста, заполните все поля.")
+            showAlert(title: "Error".localized(), message: "Please fill out all fields.".localized())
             return
         }
 
@@ -287,7 +294,7 @@ private extension LoginViewController {
                 let vc = OnboardingViewController()
                 sceneDelegate.window?.rootViewController = vc
             case .failure(let error):
-                self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+                self?.showAlert(title: "Error".localized(), message: error.localizedDescription)
             }
         }
     }

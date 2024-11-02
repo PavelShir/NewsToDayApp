@@ -19,9 +19,7 @@ class SearchViewController: UIViewController {
         view.isHidden = true
         return view
     }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
         view.backgroundColor = .white
         
         setupNavBar()
@@ -32,7 +30,6 @@ class SearchViewController: UIViewController {
         
         emptyStateView.isHidden = !articles.isEmpty
         view.addSubview(emptyStateView)
-        
     }
     
     private func setupTableView() {
@@ -45,7 +42,7 @@ class SearchViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        navigationBar.titleOfLabel.text = "Search Results"
+        navigationBar.titleOfLabel.text = "Search Results".localized()
         navigationBar.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(navigationBar)
         view.addSubview(navigationBar.view)

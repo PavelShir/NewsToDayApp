@@ -42,7 +42,7 @@ class SearchBar: UIViewController, UISearchBarDelegate {
         if let searchBarTextField = searchBar.value(forKey: "searchField") as? UITextField {
             searchBarTextField.backgroundColor = .systemGray6
             searchBarTextField.textColor = .black
-            searchBarTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [.foregroundColor: UIColor.lightGray])
+            searchBarTextField.attributedPlaceholder = NSAttributedString(string: "Search".localized(), attributes: [.foregroundColor: UIColor.lightGray])
             searchBarTextField.layer.cornerRadius = 12
             if let glassIconView = searchBarTextField.leftView as? UIImageView {
                 glassIconView.tintColor = .darkGray

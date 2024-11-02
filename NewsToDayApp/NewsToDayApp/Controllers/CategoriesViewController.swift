@@ -42,7 +42,7 @@ class CategoriesViewController: UIViewController {
         element.layer.borderWidth = 2
         element.layer.borderColor = UIColor(named: K.BrandColors.purplePrimary)?.cgColor
         element.layer.cornerRadius = 12
-        element.setTitle("Next", for: .normal)
+        element.setTitle("Next".localized(), for: .normal)
         element.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -89,11 +89,11 @@ class CategoriesViewController: UIViewController {
                       K.Categories.middleEast ]
     
 
-    var selectedCategories: Set<String> = [] 
+    var selectedCategories: Set<String> = []
     
     // MARK: - Life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        navigationController?.navigationBar.isHidden = true
         selectedCategories = CategoriesSetting.shared.getSettingLoad()
         setView()
         setConstraints()
@@ -137,14 +137,13 @@ class CategoriesViewController: UIViewController {
         }
     }
     
-    
     // MARK: - Set View
     
     func setView(){
         
         view.backgroundColor = .white
-        labelTitle.text = "Categories"
-        labelTitleDescription.text = "Thousands of articles in each category"
+        labelTitle.text = "Categories".localized()
+        labelTitleDescription.text = "Thousands of articles in each category".localized()
         
         mainStack.addArrangedSubview(labelTitle)
         mainStack.addArrangedSubview(labelTitleDescription)

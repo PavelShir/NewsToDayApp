@@ -70,7 +70,7 @@ final class ArticleViewController: UIViewController {
         buttonBack.addTarget(self, action: #selector (backButtonTapped), for: .touchUpInside)
         
         buttonBookmark.setImage(UIImage.bookmarkNavBar, for: .normal)
-        buttonBookmark.addTarget(self, action: #selector (sharedTapped), for: .touchUpInside)
+        buttonBookmark.addTarget(self, action: #selector (saveTapped), for: .touchUpInside)
         
         buttonShared.setImage(UIImage.share, for: .normal)
         buttonShared.addTarget(self, action: #selector (sharedTapped), for: .touchUpInside)
@@ -99,8 +99,8 @@ final class ArticleViewController: UIViewController {
         labelAuthor.sizeToFit()
         labelAuthor.textAlignment = .left
         labelAuthor.clipsToBounds = true
-        let nameAuthor = article.author ?? "No Author"
-        let autor = "Author"
+        let nameAuthor = article.author ?? "No Author".localized()
+        let autor = "Author".localized()
         let attributes1 = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .semibold)
                 ]
@@ -127,10 +127,13 @@ final class ArticleViewController: UIViewController {
         textView.setContentHuggingPriority(.required, for: .vertical)
         textView.textAlignment = .justified
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = article.content ?? "No content"
+        textView.text = article.content ?? "No content".localized()
     }
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
+    }
+    @objc private func saveTapped() {
+        print("saveTapped")
     }
     @objc private func sharedTapped() {
         print("sharedTapped")

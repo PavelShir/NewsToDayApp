@@ -11,8 +11,10 @@ class TermsAndConditionsVC: UIViewController {
     
     let buttonBack = UIButton()
     let textView = UITextView()
-    
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool){
+        navigationController?.navigationBar.isHidden = false
+    }
+    override func viewDidLoad(){
         super.viewDidLoad()
         view.backgroundColor = .white
         setupNavBar()
@@ -22,7 +24,7 @@ class TermsAndConditionsVC: UIViewController {
     }
     private func setupNavBar() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .semibold), NSAttributedString.Key.foregroundColor: UIColor.brandBlackPrimary]
-        title = "Terms & Conditions"
+        title = "Terms & Conditions".localized()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: buttonBack)
     }
     private func setupView() {
@@ -43,7 +45,7 @@ class TermsAndConditionsVC: UIViewController {
         buttonBack.addTarget(self, action: #selector (backButtonTapped), for: .touchUpInside)
         
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = ConstantAppString.text
+        textView.text = ConstantAppString.text.localized()
         textView.textColor = .brandGreyPrimary
         textView.sizeToFit()
         textView.textContainerInset = UIEdgeInsets( top: 20, left: 20, bottom: 20, right: 20)
@@ -57,4 +59,4 @@ class TermsAndConditionsVC: UIViewController {
     
 }
 @available(iOS 17.0, *)
-#Preview { UINavigationController(rootViewController: TermsAndConditionsVC())}
+#Preview { UINavigationController(rootViewController: TabBarViewController())}

@@ -1,25 +1,25 @@
 import UIKit
 
 struct K {
-    static let appName = "NewsToDayApp"
+    static let appName = "NewsToDayApp".localized()
 
     static let screenWidth: CGFloat = UIScreen.main.bounds.width
     static let screenHeight: CGFloat = UIScreen.main.bounds.height
 
     struct Categories {
         
-        static let sports = "🏈 Sports"
-        static let politics = "⚖️ Politics"
-        static let life = "🌞 Life"
-        static let gaming = "🎮 Gaming"
-        static let animals = "🐻 Animals"
-        static let nature = "🌴 Nature"
-        static let food = "🍔 Food"
-        static let art = "🎨 Art"
-        static let history = "📜 History"
-        static let fashion = "👗 Fashion"
-        static let covid19 = "😷 Covid-19"
-        static let middleEast = "⚔️ Middle East"
+        static let sports = "🏈 Sports".localized()
+        static let politics = "⚖️ Politics".localized()
+        static let life = "🌞 Life".localized()
+        static let gaming = "🎮 Gaming".localized()
+        static let animals = "🐻 Animals".localized()
+        static let nature = "🌴 Nature".localized()
+        static let food = "🍔 Food".localized()
+        static let art = "🎨 Art".localized()
+        static let history = "📜 History".localized()
+        static let fashion = "👗 Fashion".localized()
+        static let covid19 = "😷 Covid-19".localized()
+        static let middleEast = "⚔️ Middle East".localized()
     }
     
     struct BrandColors {
@@ -40,8 +40,8 @@ struct K {
     }
 
     struct Onboarding {
-        static let titleNext = "Next"
-        static let titleGetStarted = "Get Started"
+        static let titleNext = "Next".localized()
+        static let titleGetStarted = "Get Started".localized()
 
         // Relative sizez
         static var topMarginCollectionView: CGFloat { K.screenHeight * (120 / 812) }
@@ -61,18 +61,18 @@ struct K {
     }
 
     struct Authorization {
-        static let loginTitle: String = "Welcome Back 👋"
-        static let loginDescription: String = "I am happy to see you again. You can continue where you left off by logging in"
-        static let registerTitle: String = "Welcome to NewsToDay"
-        static let registerDescription: String = "Hello, I guess you are new around here. You can start using the application after sign up."
-        static let placeholderEmail: String = "Email"
-        static let placeholderPassword: String = "Password"
-        static let placeholderRepeatPassword: String = "Repeat Password"
-        static let placeholderName: String = "Username"
-        static let signInButtonTitle: String = "Sign In"
-        static let signUpButtonTitle: String = "Sign Up"
-        static let signInLabel: String = "Already have an account?"
-        static let signUpLabel: String = "Don't have an account?"
+        static let loginTitle: String = "Welcome Back 👋".localized()
+        static let loginDescription: String = "I am happy to see you again. You can continue where you left off by logging in".localized()
+        static let registerTitle: String = "Welcome to NewsToDay".localized()
+        static let registerDescription: String = "Hello, I guess you are new around here. You can start using the application after sign up.".localized()
+        static let placeholderEmail: String = "Email".localized()
+        static let placeholderPassword: String = "Password".localized()
+        static let placeholderRepeatPassword: String = "Repeat Password".localized()
+        static let placeholderName: String = "Username".localized()
+        static let signInButtonTitle: String = "Sign In".localized()
+        static let signUpButtonTitle: String = "Sign Up".localized()
+        static let signInLabel: String = "Already have an account?".localized()
+        static let signUpLabel: String = "Don't have an account?".localized()
 
         // Relative sizez
         static var fontSizeTitleLabel: CGFloat { K.screenWidth * (24 / 375) }

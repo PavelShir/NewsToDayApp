@@ -16,20 +16,17 @@ class BrowseViewController: UIViewController {
     
     
     //MARK: - Life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .white
-        
         setupNavBar()
         setupSearchBar()
         setupConstraints()
-        
     }
-    
     //MARK: - Setup UI
     private func setupNavBar() {
-        navigationBar.titleOfLabel.text = "Browse"
-        navigationBar.subTitleLabel.text = "Discover things of this world"
+        navigationBar.titleOfLabel.text = "Browse".localized()
+        navigationBar.subTitleLabel.text = "Discover things of this world".localized()
         navigationBar.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(navigationBar)
         view.addSubview(navigationBar.view)

@@ -14,13 +14,13 @@ struct OnboardingModel {
 extension OnboardingModel {
     static let models: [OnboardingModel] = [
         .init(
-            title: "First to know",
-            description: "All news in one place, be the first to know last news",
+            title: "First to know".localized(),
+            description: "All news in one place, be the first to know last news".localized(),
             image: "OnboardingTimesSquare"
         ),
         .init(
             title: "",
-            description: "All news in one place, be the first to know last news",
+            description: "All news in one place, be the first to know last news".localized(),
             image: "OnboardingCityView"
         ),
     ]

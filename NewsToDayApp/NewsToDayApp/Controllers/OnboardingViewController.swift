@@ -99,13 +99,22 @@ final class OnboardingViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        navigationController?.navigationBar.isHidden = true
+        view.setNeedsLayout()
         setupView()
         setupHierarchy()
         setupLayout()
         updateLabels(for: selectedIndex)
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        setupView()
+//        setupHierarchy()
+//        setupLayout()
+//        updateLabels(for: selectedIndex)
     }
 
     // MARK: - Setups
