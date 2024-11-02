@@ -73,6 +73,7 @@ class ProfileViewController: UIViewController {
     
    //MARK: - app load
     override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         view.setNeedsLayout()
         view.backgroundColor = .white

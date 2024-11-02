@@ -93,6 +93,7 @@ class CategoriesViewController: UIViewController {
     
     // MARK: - Life cycle
     override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         selectedCategories = CategoriesSetting.shared.getSettingLoad()
         setView()

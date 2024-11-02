@@ -140,6 +140,7 @@ final class LoginViewController: UIViewController {
 
     // MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         setupView()
         setupHierarchy()
         setupLayout()

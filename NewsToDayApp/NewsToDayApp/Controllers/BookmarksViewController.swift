@@ -37,9 +37,14 @@ final class BookmarksViewController: UIViewController {
     
     //MARK: - Life cycle
     override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         
         view.backgroundColor = .white
+        
+
+        reloadFavoriteArticle()
+        updateView()
         
         setupNavBar()
         setupTableView()
@@ -47,12 +52,6 @@ final class BookmarksViewController: UIViewController {
         setupConstraints()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        reloadFavoriteArticle()
-        updateView()
-    }
     
     func reloadFavoriteArticle() {
         articles = favoriteManager.bookmarksArray

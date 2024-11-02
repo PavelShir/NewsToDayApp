@@ -24,6 +24,7 @@ final class SearchViewController: UIViewController {
         return view
     }()
     override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         view.backgroundColor = .white
         
         setupNavBar()

@@ -22,6 +22,7 @@ final class BrowseViewController: UIViewController {
     
     //MARK: - Life cycle
     override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .white
         setupNavBar()
@@ -33,9 +34,9 @@ final class BrowseViewController: UIViewController {
         fetchArticle()
     }
     
-    //MARK: - Private Methods
-    
-    }
+//    //MARK: - Private Methods
+//    
+//    }
     //MARK: - Setup UI
     private func setupNavBar() {
         navigationBar.titleOfLabel.text = "Browse".localized()
@@ -90,6 +91,7 @@ final class BrowseViewController: UIViewController {
         ])
     }
 }
+//}
 
 extension BrowseViewController: CategoryCollectionViewDelegate {
     func didSelectArticle(_ article: Article) {

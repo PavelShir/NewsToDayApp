@@ -12,6 +12,7 @@ class TermsAndConditionsVC: UIViewController {
     let buttonBack = UIButton()
     let textView = UITextView()
     override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
     }
     override func viewDidLoad(){
