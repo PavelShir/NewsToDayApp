@@ -107,21 +107,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if articles.count > 0 {
             
             let selectedCell = articles[indexPath.item]
+
             let articleVC = ArticleViewController(article: selectedCell)
+        
+            articleVC.article = selectedCell
+            navigationController?.pushViewController(articleVC, animated: true)
+            articleVC.modalPresentationStyle = .pageSheet
             
-            if let navigationController = navigationController {
-                navigationController.pushViewController(articleVC, animated: true)
-            } else {
-                print("Ошибка: NavigationController не найден.")
-            }
-            
-            
-            
-//            let articleVC = ArticleViewController(article: selectedCell)
-//        
-//            articleVC.article = selectedCell
-//            articleVC.modalPresentationStyle = .fullScreen
-//            present(articleVC, animated: true, completion: nil)
+            present(articleVC, animated: true, completion: nil)
         }
     }
 }

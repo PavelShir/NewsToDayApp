@@ -45,7 +45,8 @@ class NetworkService {
                 switch response.result {
                 case .success(let newsResponse):
                     print("Success: \(newsResponse)")
-                    completion(.success(newsResponse.articles))
+                    let filter = newsResponse.articles.filter { $0.author != "[Removed]" }
+                    completion(.success(filter))
                 case .failure(let error):
                     print("Error \(error)")
                     completion(.failure(error))
@@ -75,6 +76,7 @@ class NetworkService {
                 switch response.result {
                 case .success(let newsResponse):
                     print("Success: \(newsResponse)")
+                    
                     completion(.success(newsResponse.articles))
                 case .failure(let error):
                     print("Error \(error)")
@@ -105,13 +107,18 @@ class NetworkService {
             .responseDecodable(of: NewsResponse.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let newsResponse):
-                    print("Данные успешно получены: \(newsResponse.articles.count) статей")
-                    completion(.success(newsResponse.articles))
+                    let filter = newsResponse.articles.filter { $0.author != "[Removed]" }
+                    completion(.success(filter))
                 case .failure(let error):
                     print("Ошибка: \(error)")
                     completion(.failure(error))
                 }
             }
     }
-   
+    
+}
+
+
+extension Notification.Name {
+    static let bookmarkStatusChanged = Notification.Name("bookmarkStatusChanged")
 }

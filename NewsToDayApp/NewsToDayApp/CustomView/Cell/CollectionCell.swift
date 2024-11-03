@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 
 
-
 class CollectionCell: UICollectionViewCell {
     
     
@@ -59,13 +58,32 @@ class CollectionCell: UICollectionViewCell {
         setupViews()
         setupConstraints()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFavoriteStatus(_:)), name: .bookmarkStatusChanged, object: nil)
+        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    @objc private func updateFavoriteStatus(_ notification: Notification) {
+        guard let updatedArticle = notification.object as? Article else {
+            print("не соответствует статье")
+            return
+        }
+        print("уведомление отправлено о статье: \(updatedArticle)")
+        guard let article = currentArticle else { return }
+        if updatedArticle == article {
+            print("обновлен статус статьи")
+            self.liked = favoriteManager.isFavorite(article: updatedArticle)
+            let buttonImage = liked ? UIImage.bookmarkFill : UIImage.bookmarkOutline
+            favoriteButton.setImage(buttonImage, for: .normal)
+        }
+    }
     
     @objc func favoriteButtonTapped() {
         
@@ -75,12 +93,14 @@ class CollectionCell: UICollectionViewCell {
             favoriteManager.removeFromFavorites(article: article)
             liked = false
             favoriteButton.setImage(.bookmarkOutline, for: .normal)
-            
         } else {
             favoriteManager.addToFavorites(article: article)
             liked = true
             favoriteButton.setImage(.bookmarkFill, for: .normal)
         }
+        
+        NotificationCenter.default.post(name: .bookmarkStatusChanged, object: article)
+
     }
     
     
