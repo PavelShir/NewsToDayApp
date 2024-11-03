@@ -93,6 +93,7 @@ final class SearchBar: UIViewController, UISearchBarDelegate {
         let searchResultVC = SearchViewController()
         searchResultVC.articles = articles
         searchResultVC.modalPresentationStyle = .pageSheet
-        present(searchResultVC, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: searchResultVC)
+        present(navController, animated: true, completion: nil)
     }
 }

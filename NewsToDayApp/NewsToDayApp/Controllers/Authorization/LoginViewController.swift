@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
+//import FirebaseAuth
+//import FirebaseFirestore
 
 final class LoginViewController: UIViewController {
 
@@ -148,9 +148,20 @@ final class LoginViewController: UIViewController {
         setupPasswordObservers()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+
     // MARK: - Setups
 
     private func setupView() {
+        navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -270,7 +281,8 @@ private extension LoginViewController {
     func handleSignInButton() {
         guard
             let windowScene = view.window?.windowScene,
-            let sceneDelegate = windowScene.delegate as? SceneDelegate
+            let sceneDelegate = windowScene.delegate as? SceneDelegate,
+            let window = sceneDelegate.window
         else { return }
 
         guard
@@ -285,7 +297,8 @@ private extension LoginViewController {
             switch result {
             case .success:
                 let vc = OnboardingViewController()
-                sceneDelegate.window?.rootViewController = vc
+                let nc = UINavigationController(rootViewController: vc)
+                window.rootViewController = nc
             case .failure(let error):
                 self?.showAlert(title: "Ошибка", message: error.localizedDescription)
             }

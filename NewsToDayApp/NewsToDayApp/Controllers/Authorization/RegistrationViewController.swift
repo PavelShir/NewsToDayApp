@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
+//import FirebaseAuth
+//import FirebaseFirestore
 
 final class RegistrationViewController: UIViewController {
 
