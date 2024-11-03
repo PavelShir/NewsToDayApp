@@ -100,7 +100,7 @@ final class BrowseViewController: UIViewController {
             
             categoryCollectionView.topAnchor.constraint(equalTo: categoryName.bottomAnchor, constant: 24),
             categoryCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
-            categoryCollectionView.widthAnchor.constraint(greaterThanOrEqualToConstant: 4000),
+            categoryCollectionView.widthAnchor.constraint(greaterThanOrEqualToConstant: 2000),
             categoryCollectionView.heightAnchor.constraint(equalToConstant: 256),
         ])
     }
@@ -109,11 +109,14 @@ final class BrowseViewController: UIViewController {
 
 //MARK: - CategoryCollectionViewDelegate
 extension BrowseViewController: CategoryCollectionViewDelegate {
+   
+    
     func didSelectArticle(_ article: Article) {
             let articleVC = ArticleViewController(article: article)
             
             if let navigationController = navigationController {
                 navigationController.pushViewController(articleVC, animated: true)
+                
             } else {
                 print("Ошибка: NavigationController не найден.")
             }
