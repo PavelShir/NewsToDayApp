@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+//import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     
@@ -49,27 +49,32 @@ class ProfileViewController: UIViewController {
         return userEmail
     }()
     
-    private lazy var languageButton: UIButton = {
-        let languageButton = ProfileButtons(title: "Language".localized(), picName: "greaterthan")
+    private lazy var languageButton: ProfileButtons = {
+        let languageButton = ProfileButtons(picName: "greaterthan")
         languageButton.addTarget(self, action: #selector(languageTapped), for: .touchUpInside)
         
         return languageButton
     }()
     
-    private lazy var termsButton: UIButton = {
-        let termsButton = ProfileButtons(title: "Terms & Conditions".localized(), picName: "greaterthan")
+    private lazy var termsButton: ProfileButtons = {
+        let termsButton = ProfileButtons(picName: "greaterthan")
         termsButton.addTarget(self, action: #selector(termsTapped), for: .touchUpInside)
         
         return termsButton
     }()
     
-    private lazy var signOutButton: UIButton = {
-        let signOutButton = ProfileButtons(title: "Sign Out".localized(), picName: "rectangle.portrait.and.arrow.forward")
+    private lazy var signOutButton: ProfileButtons = {
+        let signOutButton = ProfileButtons(picName: "rectangle.portrait.and.arrow.forward")
         signOutButton.addTarget(self, action: #selector(signOutTapped), for: .touchUpInside)
         
         return signOutButton
     }()
-
+    
+    private func setupButtons() {
+        languageButton.setupTitle(title: "Language".localized())
+        termsButton.setupTitle(title: "Terms & Conditions".localized())
+        signOutButton.setupTitle(title: "Sign Out".localized())
+    }
     
    //MARK: - app load
     override func viewWillAppear(_ animated: Bool){
@@ -79,15 +84,9 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         setupNavBar()
         setupConstreints()
+        setupButtons()
         loadUserData()
     }
-//    override func viewDidLoad() {
-//        view.setNeedsLayout()
-//        view.backgroundColor = .white
-//        setupNavBar()
-//        setupConstreints()
-//        loadUserData()
-//    }
     
     private func setupNavBar() {
         navigationBar.titleOfLabel.text = "Profile".localized()
@@ -147,6 +146,7 @@ class ProfileViewController: UIViewController {
             navigationBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navigationBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.view.heightAnchor.constraint(equalToConstant: 50),
+
             
             fotoImage.topAnchor.constraint(equalTo: navigationBar.view.bottomAnchor, constant: 30),
             fotoImage.widthAnchor.constraint(equalToConstant: 72),

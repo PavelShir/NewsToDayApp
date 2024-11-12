@@ -42,7 +42,6 @@ class CategoriesViewController: UIViewController {
         element.layer.borderWidth = 2
         element.layer.borderColor = UIColor(named: K.BrandColors.purplePrimary)?.cgColor
         element.layer.cornerRadius = 12
-        element.setTitle("Next".localized(), for: .normal)
         element.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -76,17 +75,17 @@ class CategoriesViewController: UIViewController {
     var cellId = "Cell"
     
     let categories = [K.Categories.sports,
-                      K.Categories.politics,
-                      K.Categories.life,
-                      K.Categories.gaming,
-                      K.Categories.animals,
-                      K.Categories.nature,
-                      K.Categories.food,
-                      K.Categories.art,
-                      K.Categories.history,
-                      K.Categories.fashion,
-                      K.Categories.covid19,
-                      K.Categories.middleEast ]
+                       K.Categories.politics,
+                       K.Categories.life,
+                       K.Categories.gaming,
+                       K.Categories.animals,
+                       K.Categories.nature,
+                       K.Categories.food,
+                       K.Categories.art,
+                       K.Categories.history,
+                       K.Categories.fashion,
+                       K.Categories.covid19,
+                       K.Categories.middleEast]
     
 
     var selectedCategories: Set<String> = []
@@ -99,6 +98,8 @@ class CategoriesViewController: UIViewController {
         setView()
         setConstraints()
         setDelegate()
+        nextButton.setTitle("Next".localized(), for: .normal)
+        collectionview.reloadData()
     }
     
     // MARK: - Setup Delegate
@@ -187,7 +188,7 @@ extension CategoriesViewController: UICollectionViewDataSource, UICollectionView
         
         cell.button.setTitleColor(self.selectedCategories.contains(category) ?  .white : UIColor(named: K.BrandColors.greyDark), for: .normal)
                                   
-        cell.button.setTitle(categories[indexPath.row], for: .normal)
+        cell.button.setTitle(categories[indexPath.row].localized(), for: .normal)
         cell.delegate = self
         return cell
     }

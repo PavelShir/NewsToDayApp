@@ -8,18 +8,18 @@ struct K {
 
     struct Categories {
         
-        static let sports = "🏈 Sports".localized()
-        static let politics = "⚖️ Politics".localized()
-        static let life = "🌞 Life".localized()
-        static let gaming = "🎮 Gaming".localized()
-        static let animals = "🐻 Animals".localized()
-        static let nature = "🌴 Nature".localized()
-        static let food = "🍔 Food".localized()
-        static let art = "🎨 Art".localized()
-        static let history = "📜 History".localized()
-        static let fashion = "👗 Fashion".localized()
-        static let covid19 = "😷 Covid-19".localized()
-        static let middleEast = "⚔️ Middle East".localized()
+        static let sports = "🏈 Sports"
+        static let politics = "⚖️ Politics"
+        static let life = "🌞 Life"
+        static let gaming = "🎮 Gaming"
+        static let animals = "🐻 Animals"
+        static let nature = "🌴 Nature"
+        static let food = "🍔 Food"
+        static let art = "🎨 Art"
+        static let history = "📜 History"
+        static let fashion = "👗 Fashion"
+        static let covid19 = "😷 Covid-19"
+        static let middleEast = "⚔️ Middle East"
     }
     
     struct BrandColors {

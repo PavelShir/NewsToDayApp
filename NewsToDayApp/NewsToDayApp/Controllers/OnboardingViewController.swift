@@ -195,8 +195,8 @@ final class OnboardingViewController: UIViewController {
 
     private func updateLabels(for index: Int) {
         guard index < models.count else { return }
-        titleLabel.text = models[index].title
-        descriptionLabel.text = models[index].description
+        titleLabel.text = models[index].title.localized()
+        descriptionLabel.text = models[index].description.localized()
     }
 
     // MARK: - Actions

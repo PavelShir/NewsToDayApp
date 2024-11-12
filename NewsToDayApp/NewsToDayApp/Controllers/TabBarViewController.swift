@@ -18,9 +18,12 @@ class TabBarViewController: UITabBarController {
     private func generateTabBar() {
         viewControllers = [
             generateVC(viewController: UINavigationController(rootViewController: BrowseViewController()), image: UIImage.home),
+        
             generateVC(viewController: UINavigationController(rootViewController: CategoriesViewController()), image: UIImage.apps),
+            
             generateVC(viewController: UINavigationController(rootViewController: BookmarksViewController()), image: UIImage.bookmark),
-            generateVC(viewController: UINavigationController(rootViewController:ProfileViewController()), image: UIImage.profile)
+            
+            generateVC(viewController: UINavigationController(rootViewController: ProfileViewController()), image: UIImage.profile)
         ]
     }
 
