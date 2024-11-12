@@ -76,14 +76,14 @@ class LanguageVC: UIViewController {
         
         buttonEn.setTitle("English", for: .normal)
         buttonEn.setImage(.checkGray, for: .normal)
+        buttonEn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -200, bottom: 0, right: 0)
+        buttonEn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -230)
         buttonEn.addTarget(self, action: #selector(buttonEnTapped), for: .touchUpInside)
         buttonEn.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         buttonEn.setTitleColor(UIColor.brandGreyDark, for: .normal)
         buttonEn.layer.borderColor = UIColor.black.cgColor
         buttonEn.layer.borderWidth = 1
         buttonEn.semanticContentAttribute = .forceRightToLeft
-        buttonEn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -200, bottom: 0, right: 0)
-        buttonEn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -230)
         buttonEn.layer.cornerRadius = 12
         buttonEn.backgroundColor = .brandGreyLighter
         buttonEn.translatesAutoresizingMaskIntoConstraints = false

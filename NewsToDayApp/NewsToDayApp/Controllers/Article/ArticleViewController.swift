@@ -67,7 +67,28 @@ final class ArticleViewController: UIViewController {
         setupLikedState()
         configuration()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFavoriteStatus(_:)), name: .bookmarkStatusChanged, object: nil)
+        
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func updateFavoriteStatus(_ notification: Notification) {
+        guard let updatedArticle = notification.object as? Article else {
+            print("Notification object is not an Article")
+            return
+        }
+        print("отправлено уведомление о статье: \(updatedArticle)")
+        if updatedArticle == article {
+            print("Обновлен статус статьи")
+            self.liked = favoriteManager.isFavorite(article: updatedArticle)
+            let buttonImage = liked ? UIImage.bookmarkFill : UIImage.bookmarkOutline
+            buttonBookmark.setImage(buttonImage, for: .normal)
+        }
+    }
+
    
     
     private func setupView() {
@@ -182,13 +203,15 @@ final class ArticleViewController: UIViewController {
             liked = true
             buttonBookmark.setImage(.bookmarkFill, for: .normal)
         }
+        print("Отправка уведомления для статьи: \(article)")
+        NotificationCenter.default.post(name: .bookmarkStatusChanged, object: article)
     }
     
     
     func setupImage() {
         let imageURL = URL(string: article.urlToImage ?? "")
         imageView.kf.indicatorType = .activity
-        let placeholderImage = UIImage(named: "image")
+        let placeholderImage = UIImage(named: "placeholder")
         imageView.kf.setImage(
             with: imageURL,
             options: [
@@ -230,6 +253,7 @@ final class ArticleViewController: UIViewController {
             labelDescription.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 16),
             labelDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             labelDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+           
             
             labelAuthor.topAnchor.constraint(equalTo: labelDescription.bottomAnchor, constant: -24),
             labelAuthor.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16),
@@ -239,7 +263,7 @@ final class ArticleViewController: UIViewController {
             textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             textView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
         ])
     }

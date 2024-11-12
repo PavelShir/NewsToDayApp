@@ -14,6 +14,8 @@ protocol CategoryCollectionViewDelegate: AnyObject {
 
 final class CategoryCollectionView: UIView {
     
+    
+    
     //MARK: - Property
     var collectionView: UICollectionView!
     private let networkManager = NetworkService.shared
@@ -43,15 +45,7 @@ final class CategoryCollectionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func handleFavoritesUpdate(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-    }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
     //MARK: - Private Property
     
     private func configureCollection() {
@@ -97,7 +91,7 @@ extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewData
         cell.liked = favoriteManager.bookmarksArray.contains(selectedNews)
         cell.favoriteButton.setImage(cell.liked ? .bookmarkFill : .bookmarkOutline, for: .normal)
         cell.setupCell(selectedNews, categoryName: categoryName)
-       
+        
     
         return cell
     }
@@ -108,6 +102,7 @@ extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell = articles[indexPath.item]
-        delegate?.didSelectArticle(selectedCell)
+        
+        delegate?.didSelectArticle(selectedCell )
     }
 }
