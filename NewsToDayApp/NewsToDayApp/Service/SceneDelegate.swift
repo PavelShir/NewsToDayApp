@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let tabBarController = TabBarViewController()
               navigationController = UINavigationController(rootViewController: tabBarController)
           } else {
-              let onboardingController = OnboardingViewController()
+              let onboardingController = LaunchScreenViewController()
               navigationController = UINavigationController(rootViewController: onboardingController)
           }
 

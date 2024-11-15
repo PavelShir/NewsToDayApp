@@ -19,7 +19,7 @@ extension OnboardingModel {
             image: "OnboardingTimesSquare"
         ),
         .init(
-            title: "",
+            title: "Choose your News",
             description: "All news in one place, be the first to know last news".localized(),
             image: "OnboardingCityView"
         ),

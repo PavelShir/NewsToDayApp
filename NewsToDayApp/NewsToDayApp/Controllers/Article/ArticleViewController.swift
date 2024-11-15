@@ -117,11 +117,11 @@ final class ArticleViewController: UIViewController {
         buttonBack.addTarget(self, action: #selector (backButtonTapped), for: .touchUpInside)
         
         buttonBookmark.setImage(UIImage.bookmarkNavBar, for: .normal)
-        buttonBookmark.addTarget(self, action: #selector (saveTapped), for: .touchUpInside)
+        buttonBookmark.addTarget(self, action: #selector (bookmarkTapped), for: .touchUpInside)
         
        
         buttonShared.setImage(UIImage.share, for: .normal)
-        buttonShared.addTarget(self, action: #selector (sharedTapped), for: .touchUpInside)
+        buttonShared.addTarget(self, action: #selector (bookmarkTapped), for: .touchUpInside)
         buttonShared.translatesAutoresizingMaskIntoConstraints = false
         
         labelTitle.font = .systemFont(ofSize: 12, weight: .semibold)
@@ -186,12 +186,6 @@ final class ArticleViewController: UIViewController {
     
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
-    }
-    @objc private func saveTapped() {
-        print("saveTapped")
-    }
-    @objc private func sharedTapped() {
-        print("sharedTapped")
     }
     
     @objc private func bookmarkTapped() {
@@ -271,6 +265,7 @@ final class ArticleViewController: UIViewController {
     }
     
 }
-
+/*
 @available(iOS 18.0, *)
 #Preview { UINavigationController(rootViewController: ArticleViewController(article: .init(source: .init(id: "", name: ""), author: "World", title: "Hello", description: "adsd,/nfkelwnfjnbwejknfjkn dksalkfnaklsndfklnsadklnfkansaskf/n dklnsadklnfklds\n\nanlkfnklasdnf", url: "", urlToImage: "", publishedAt: "", content: "dsfsdfssfd ajknsjdfnklsndlf\nlsdflknl\nksddsfksdfak\nsdfsda\nfsdafasfsadfsaf\nsdfsdfasdfsadfsdfdwsf\nfsdfsafsadfdfdsn\n\n\\nasdak\n\nsdnaklf\n\n\n\n\n\nnkjdsnjkfnkjsanfjknsdjkbfjkbhwjqevfuyvwessdada\n\n\nsmfnmsakd mds f sm fm sdfs mf, dm fma ,m sdmf s ,f ,m\ns dfm sm df,\nm sdm fm sdm f,ms df sd, fm sdm, f")))}
+*/
