@@ -21,11 +21,8 @@ final class SearchViewController: UIViewController {
         view.isHidden = true
         return view
     }()
-    
-    
-    //MARK: - Life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
         view.backgroundColor = .white
         
         setupNavBar()
@@ -53,7 +50,7 @@ final class SearchViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        navigationBar.titleOfLabel.text = "Search Results"
+        navigationBar.titleOfLabel.text = "Search Results".localized()
         navigationBar.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(navigationBar)
         view.addSubview(navigationBar.view)

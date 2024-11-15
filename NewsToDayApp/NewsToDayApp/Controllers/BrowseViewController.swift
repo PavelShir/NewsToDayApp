@@ -22,11 +22,10 @@ final class BrowseViewController: UIViewController {
     
     
     //MARK: - Life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .white
-        
-     
         setupNavBar()
         setupSearchBar()
         setupCollectionView()
@@ -36,11 +35,13 @@ final class BrowseViewController: UIViewController {
         fetchArticle()
     }
     
-    //MARK: - Private Methods
-    
+//    //MARK: - Private Methods
+//    
+//    }
+    //MARK: - Setup UI
     private func setupNavBar() {
-        navigationBar.titleOfLabel.text = "Browse"
-        navigationBar.subTitleLabel.text = "Discover things of this world"
+        navigationBar.titleOfLabel.text = "Browse".localized()
+        navigationBar.subTitleLabel.text = "Discover things of this world".localized()
         navigationBar.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(navigationBar)
         view.addSubview(navigationBar.view)
@@ -83,7 +84,7 @@ final class BrowseViewController: UIViewController {
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
-            navigationBar.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+            navigationBar.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             navigationBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navigationBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.view.heightAnchor.constraint(equalToConstant: 60),
@@ -105,6 +106,7 @@ final class BrowseViewController: UIViewController {
         ])
     }
 }
+//}
 
 
 //MARK: - CategoryCollectionViewDelegate

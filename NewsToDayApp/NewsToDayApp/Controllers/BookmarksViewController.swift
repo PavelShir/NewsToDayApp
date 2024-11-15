@@ -39,10 +39,15 @@ final class BookmarksViewController: UIViewController {
     
     
     //MARK: - Life cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        
         view.backgroundColor = .white
+        
+
+        reloadFavoriteArticle()
+        updateView()
         
         setupNavBar()
         setupTableView()
@@ -50,12 +55,6 @@ final class BookmarksViewController: UIViewController {
         setupConstraints()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        reloadFavoriteArticle()
-        updateView()
-    }
     
     func reloadFavoriteArticle() {
         articles = favoriteManager.bookmarksArray
@@ -94,8 +93,8 @@ final class BookmarksViewController: UIViewController {
     
     //MARK: - Setup UI
     private func setupNavBar() {
-        navigationBar.titleOfLabel.text = "Bookmarks"
-        navigationBar.subTitleLabel.text = "Saved articles to the library"
+        navigationBar.titleOfLabel.text = "Bookmarks".localized()
+        navigationBar.subTitleLabel.text = "Saved articles to the library".localized()
         navigationBar.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(navigationBar)
         view.addSubview(navigationBar.view)
@@ -121,7 +120,7 @@ final class BookmarksViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            navigationBar.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+            navigationBar.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             navigationBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navigationBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.view.heightAnchor.constraint(equalToConstant: 60),

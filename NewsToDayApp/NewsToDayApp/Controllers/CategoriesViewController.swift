@@ -42,7 +42,6 @@ class CategoriesViewController: UIViewController {
         element.layer.borderWidth = 2
         element.layer.borderColor = UIColor(named: K.BrandColors.purplePrimary)?.cgColor
         element.layer.cornerRadius = 12
-        element.setTitle("Next", for: .normal)
         element.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -76,28 +75,31 @@ class CategoriesViewController: UIViewController {
     var cellId = "Cell"
     
     let categories = [K.Categories.sports,
-                      K.Categories.politics,
-                      K.Categories.life,
-                      K.Categories.gaming,
-                      K.Categories.animals,
-                      K.Categories.nature,
-                      K.Categories.food,
-                      K.Categories.art,
-                      K.Categories.history,
-                      K.Categories.fashion,
-                      K.Categories.covid19,
-                      K.Categories.middleEast ]
+                       K.Categories.politics,
+                       K.Categories.life,
+                       K.Categories.gaming,
+                       K.Categories.animals,
+                       K.Categories.nature,
+                       K.Categories.food,
+                       K.Categories.art,
+                       K.Categories.history,
+                       K.Categories.fashion,
+                       K.Categories.covid19,
+                       K.Categories.middleEast]
     
 
-    var selectedCategories: Set<String> = [] 
+    var selectedCategories: Set<String> = []
     
     // MARK: - Life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
         selectedCategories = CategoriesSetting.shared.getSettingLoad()
         setView()
         setConstraints()
         setDelegate()
+        nextButton.setTitle("Next".localized(), for: .normal)
+        collectionview.reloadData()
     }
     
     // MARK: - Setup Delegate
@@ -137,14 +139,13 @@ class CategoriesViewController: UIViewController {
         }
     }
     
-    
     // MARK: - Set View
     
     func setView(){
         
         view.backgroundColor = .white
-        labelTitle.text = "Categories"
-        labelTitleDescription.text = "Thousands of articles in each category"
+        labelTitle.text = "Categories".localized()
+        labelTitleDescription.text = "Thousands of articles in each category".localized()
         
         mainStack.addArrangedSubview(labelTitle)
         mainStack.addArrangedSubview(labelTitleDescription)
@@ -187,7 +188,7 @@ extension CategoriesViewController: UICollectionViewDataSource, UICollectionView
         
         cell.button.setTitleColor(self.selectedCategories.contains(category) ?  .white : UIColor(named: K.BrandColors.greyDark), for: .normal)
                                   
-        cell.button.setTitle(categories[indexPath.row], for: .normal)
+        cell.button.setTitle(categories[indexPath.row].localized(), for: .normal)
         cell.delegate = self
         return cell
     }

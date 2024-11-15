@@ -13,6 +13,20 @@ class LanguageVC: UIViewController {
     let buttonEn = UIButton()
     let buttonBack = UIButton()
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        navigationController?.navigationBar.isHidden = false
+        title = "Language".localized()
+        if LanguageManager.currentLanguage == "en"{
+            buttonEnTapped()
+        }else{
+            buttonRuTapped()
+        }
+
+        buttonRu.setTitle("Russian".localized(), for: .normal)
+        buttonEn.setTitle("English".localized(), for: .normal)
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -23,7 +37,6 @@ class LanguageVC: UIViewController {
     }
     private func setupNavBar() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .semibold), NSAttributedString.Key.foregroundColor: UIColor.brandBlackPrimary]
-        title = "Language"
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: buttonBack)
     }
     private func setupView() {
@@ -49,7 +62,7 @@ class LanguageVC: UIViewController {
         
         buttonRu.setTitle("Russian", for: .normal)
         buttonRu.setImage(.checkGray, for: .normal)
-        buttonRu.titleEdgeInsets = UIEdgeInsets(top: 0, left: -230, bottom: 0, right: 0)
+        buttonRu.titleEdgeInsets = UIEdgeInsets(top: 0, left: -200, bottom: 0, right: 0)
         buttonRu.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -230)
         buttonRu.addTarget(self, action: #selector(buttonRuTapped), for: .touchUpInside)
         buttonRu.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -63,14 +76,14 @@ class LanguageVC: UIViewController {
         
         buttonEn.setTitle("English", for: .normal)
         buttonEn.setImage(.checkGray, for: .normal)
+        buttonEn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -200, bottom: 0, right: 0)
+        buttonEn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -230)
         buttonEn.addTarget(self, action: #selector(buttonEnTapped), for: .touchUpInside)
         buttonEn.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         buttonEn.setTitleColor(UIColor.brandGreyDark, for: .normal)
         buttonEn.layer.borderColor = UIColor.black.cgColor
         buttonEn.layer.borderWidth = 1
         buttonEn.semanticContentAttribute = .forceRightToLeft
-        buttonEn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -230, bottom: 0, right: 0)
-        buttonEn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -230)
         buttonEn.layer.cornerRadius = 12
         buttonEn.backgroundColor = .brandGreyLighter
         buttonEn.translatesAutoresizingMaskIntoConstraints = false
@@ -90,6 +103,8 @@ class LanguageVC: UIViewController {
         buttonRu.layer.borderWidth = 1
         buttonEn.setTitleColor(.white, for: .normal)
         buttonRu.setTitleColor(.brandGreyDark, for: .normal)
+        LanguageManager.setCurrentLanguage(.en)
+        view.setNeedsLayout()
     }
     
     @objc private func buttonRuTapped() {
@@ -103,6 +118,8 @@ class LanguageVC: UIViewController {
         buttonEn.layer.borderWidth = 1
         buttonRu.setTitleColor(.white, for: .normal)
         buttonEn.setTitleColor(.brandGreyDark, for: .normal)
+        LanguageManager.setCurrentLanguage(.ru)
+        view.setNeedsLayout()
         
     }
 }

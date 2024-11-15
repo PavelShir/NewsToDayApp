@@ -135,7 +135,7 @@ final class RegistrationViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -286,12 +286,12 @@ private extension RegistrationViewController {
             let password = passwordTextField.text, !password.isEmpty,
             let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty
         else {
-            showAlert(title: "Ошибка", message: "Пожалуйста, заполните все поля.")
+            showAlert(title: "Error".localized(), message: "Please fill out all fields.".localized())
             return
         }
 
         guard password == repeatPassword else {
-            showAlert(title: "Ошибка", message: "Пароли не совпадают.")
+            showAlert(title: "Error".localized(), message: "The passwords do not match.".localized())
             return
         }
 
@@ -308,11 +308,11 @@ private extension RegistrationViewController {
 
                 switch result {
                 case .success:
-                    self?.showAlert(title: "Успех", message: "Аккаунт успешно создан!") {
+                    self?.showAlert(title: "Success", message: "Account created successfully!") {
                         self?.handleSignInButton()
                     }
                 case .failure(let error):
-                    self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+                    self?.showAlert(title: "Error".localized(), message: error.localizedDescription)
                 }
             }
         }

@@ -45,44 +45,51 @@ class ProfileViewController: UIViewController {
 
         return userEmail
     }()
-
-    private lazy var languageButton: UIButton = {
-        let languageButton = ProfileButtons(title: String(localized:"Language"), picName: "greaterthan")
+    
+    private lazy var languageButton: ProfileButtons = {
+        let languageButton = ProfileButtons(picName: "greaterthan")
         languageButton.addTarget(self, action: #selector(languageTapped), for: .touchUpInside)
 
         return languageButton
     }()
-
-    private lazy var termsButton: UIButton = {
-        let termsButton = ProfileButtons(title: String(localized:"Terms & Conditions"), picName: "greaterthan")
+    
+    private lazy var termsButton: ProfileButtons = {
+        let termsButton = ProfileButtons(picName: "greaterthan")
         termsButton.addTarget(self, action: #selector(termsTapped), for: .touchUpInside)
 
         return termsButton
     }()
+    private lazy var signInButton: ProfileButtons = {
+        let signInButton = ProfileButtons(picName: "rectangle.portrait.and.arrow.forward")
+        signInButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
 
-    private lazy var signOutButton: UIButton = {
-        let signOutButton = ProfileButtons(title: String(localized:"Sign Out"), picName: "rectangle.portrait.and.arrow.forward")
+        return signInButton
+    }()
+    
+    private lazy var signOutButton: ProfileButtons = {
+        let signOutButton = ProfileButtons(picName: "rectangle.portrait.and.arrow.forward")
         signOutButton.addTarget(self, action: #selector(signOutTapped), for: .touchUpInside)
 
         return signOutButton
     }()
-
-    private lazy var signInButton: UIButton = {
-        let signOutButton = ProfileButtons(title: String(localized:"Sign In"), picName: "person.badge.plus")
-        signOutButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
-
-        return signOutButton
-    }()
-
-    //MARK: - app load
-
-    override func viewDidLoad() {
+    
+    private func setupButtons() {
+        languageButton.setupTitle(title: "Language".localized())
+        termsButton.setupTitle(title: "Terms & Conditions".localized())
+        signInButton.setupTitle(title: "Sign In".localized())
+        signOutButton.setupTitle(title: "Sign Out".localized())
+    }
+    
+   //MARK: - app load
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        view.setNeedsLayout()
         view.backgroundColor = .white
         setupNavBar()
         setupConstreints()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
+        setupButtons()
+        loadUserData()
         if isGuestUser {
             setupSignInButton()
         } else {
@@ -91,7 +98,7 @@ class ProfileViewController: UIViewController {
     }
 
     private func setupNavBar() {
-        navigationBar.titleOfLabel.text = "Profile"
+        navigationBar.titleOfLabel.text = "Profile".localized()
         navigationBar.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(navigationBar)
         view.addSubview(navigationBar.view)

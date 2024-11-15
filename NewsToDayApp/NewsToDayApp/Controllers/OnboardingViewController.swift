@@ -99,13 +99,23 @@ final class OnboardingViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        view.setNeedsLayout()
         setupView()
         setupHierarchy()
         setupLayout()
         updateLabels(for: selectedIndex)
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        setupView()
+//        setupHierarchy()
+//        setupLayout()
+//        updateLabels(for: selectedIndex)
     }
 
     // MARK: - Setups
@@ -185,8 +195,8 @@ final class OnboardingViewController: UIViewController {
 
     private func updateLabels(for index: Int) {
         guard index < models.count else { return }
-        titleLabel.text = models[index].title
-        descriptionLabel.text = models[index].description
+        titleLabel.text = models[index].title.localized()
+        descriptionLabel.text = models[index].description.localized()
     }
 
     // MARK: - Actions

@@ -139,18 +139,22 @@ final class LoginViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
         setupView()
         setupHierarchy()
         setupLayout()
         setupPasswordObservers()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        setupView()
+//        setupHierarchy()
+//        setupLayout()
+//        setupPasswordObservers()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -289,7 +293,7 @@ private extension LoginViewController {
             let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty
         else {
-            showAlert(title: "Ошибка", message: "Пожалуйста, заполните все поля.")
+            showAlert(title: "Error".localized(), message: "Please fill out all fields.".localized())
             return
         }
 
@@ -300,7 +304,7 @@ private extension LoginViewController {
                 let nc = UINavigationController(rootViewController: vc)
                 window.rootViewController = nc
             case .failure(let error):
-                self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+                self?.showAlert(title: "Error".localized(), message: error.localizedDescription)
             }
         }
     }

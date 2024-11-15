@@ -25,9 +25,6 @@ final class SearchBar: UIViewController, UISearchBarDelegate {
         setConstraints()
     }
     
-    
-    //MARK: - Private Methods
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchTerm = searchBar.text, !searchTerm.isEmpty {
             loadArticle(searchTerm)
@@ -64,7 +61,7 @@ final class SearchBar: UIViewController, UISearchBarDelegate {
         if let searchBarTextField = searchBar.value(forKey: "searchField") as? UITextField {
             searchBarTextField.backgroundColor = .brandGreyLighter
             searchBarTextField.textColor = .brandBlackDark
-            searchBarTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [.foregroundColor: UIColor.lightGray])
+            searchBarTextField.attributedPlaceholder = NSAttributedString(string: "Search".localized(), attributes: [.foregroundColor: UIColor.lightGray])
             searchBarTextField.layer.cornerRadius = 12
             if let glassIconView = searchBarTextField.leftView as? UIImageView {
                 glassIconView.tintColor = .brandBlackLight
@@ -87,7 +84,6 @@ final class SearchBar: UIViewController, UISearchBarDelegate {
             
         ])
     }
-    
    
     private func presentSearchScreen() {
         let searchResultVC = SearchViewController()

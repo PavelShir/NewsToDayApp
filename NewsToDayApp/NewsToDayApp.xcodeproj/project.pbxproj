@@ -18,16 +18,18 @@
 		0F11F43F2CD24D60009DD9B7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F43E2CD24D52009DD9B7 /* AuthManager.swift */; };
 		0F11F4412CD24D6F009DD9B7 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4402CD24D69009DD9B7 /* FirestoreManager.swift */; };
 		0F11F4432CD25B73009DD9B7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11F4422CD25B6A009DD9B7 /* UIViewController+Extension.swift */; };
-		0F2756A92CD2E8450045BBFE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F2756A82CD2E8450045BBFE /* GoogleService-Info.plist */; };
+		0F2756AC2CD3BA3D0045BBFE /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2756AB2CD3BA380045BBFE /* LanguageManager.swift */; };
+		0F2756AE2CD3BB360045BBFE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0F2756AD2CD3BB360045BBFE /* Localizable.xcstrings */; };
+		0F76BF0C2CD407BD00F84CB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F76BF072CD407BD00F84CB3 /* LaunchScreen.storyboard */; };
+		0F76BF1D2CD7421700F84CB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F76BF1C2CD7421700F84CB3 /* GoogleService-Info.plist */; };
 		0F838FD42CC8F5600028D301 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F838FD32CC8F5410028D301 /* ArticleViewController.swift */; };
 		0F838FD92CC8F76A0028D301 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F838FD82CC8F7640028D301 /* ArticleView.swift */; };
 		0F8390432CC95C500028D301 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F8390422CC95C500028D301 /* Config.plist */; };
 		0F8390642CCFD7460028D301 /* TermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8390632CCFD7460028D301 /* TermsAndConditionsVC.swift */; };
 		0F8390662CCFD74E0028D301 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8390652CCFD74A0028D301 /* LanguageVC.swift */; };
 		0FB9460F2CD11DAC00547AA2 /* ConstantAppString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB9460E2CD11D9400547AA2 /* ConstantAppString.swift */; };
+		0FD2738E2CE3E6E10042C7B2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0FD2738D2CE3E6E10042C7B2 /* Alamofire */; };
 		310DF37D2CD68A3F00AF642B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 310DF37C2CD68A3F00AF642B /* Kingfisher */; };
-		310DF3802CD68A4600AF642B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 310DF37F2CD68A4600AF642B /* Alamofire */; };
-		310DF3822CD68A4600AF642B /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 310DF3812CD68A4600AF642B /* AlamofireDynamic */; };
 		310DF38F2CD68DC200AF642B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 310DF38E2CD68DC200AF642B /* FirebaseAnalytics */; };
 		310DF3912CD68DC200AF642B /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 310DF3902CD68DC200AF642B /* FirebaseAnalyticsOnDeviceConversion */; };
 		310DF3932CD68DC200AF642B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 310DF3922CD68DC200AF642B /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -91,7 +93,12 @@
 		0F11F43E2CD24D52009DD9B7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		0F11F4402CD24D69009DD9B7 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		0F11F4422CD25B6A009DD9B7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		0F2756A82CD2E8450045BBFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0F2756AB2CD3BA380045BBFE /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		0F2756AD2CD3BB360045BBFE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		0F76BF062CD407BD00F84CB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0F76BF0F2CD4085600F84CB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		0F76BF112CD4088C00F84CB3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		0F76BF1C2CD7421700F84CB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0F838FD32CC8F5410028D301 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		0F838FD82CC8F7640028D301 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		0F8390422CC95C500028D301 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
@@ -138,7 +145,6 @@
 				310DF3B92CD68DC200AF642B /* FirebaseStorage in Frameworks */,
 				310DF3932CD68DC200AF642B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				310DF39D2CD68DC200AF642B /* FirebaseCore in Frameworks */,
-				310DF3802CD68A4600AF642B /* Alamofire in Frameworks */,
 				310DF3B12CD68DC200AF642B /* FirebaseMLModelDownloader in Frameworks */,
 				310DF3A32CD68DC200AF642B /* FirebaseDynamicLinks in Frameworks */,
 				310DF3912CD68DC200AF642B /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
@@ -152,13 +158,13 @@
 				310DF3BB2CD68DC200AF642B /* FirebaseStorageCombine-Community in Frameworks */,
 				310DF3B72CD68DC200AF642B /* FirebaseRemoteConfig in Frameworks */,
 				310DF38F2CD68DC200AF642B /* FirebaseAnalytics in Frameworks */,
-				310DF3822CD68A4600AF642B /* AlamofireDynamic in Frameworks */,
 				310DF3B52CD68DC200AF642B /* FirebasePerformance in Frameworks */,
 				310DF39F2CD68DC200AF642B /* FirebaseCrashlytics in Frameworks */,
 				310DF3972CD68DC200AF642B /* FirebaseAppDistribution-Beta in Frameworks */,
 				310DF39B2CD68DC200AF642B /* FirebaseAuthCombine-Community in Frameworks */,
 				310DF3B32CD68DC200AF642B /* FirebaseMessaging in Frameworks */,
 				310DF3AF2CD68DC200AF642B /* FirebaseInstallations in Frameworks */,
+				0FD2738E2CE3E6E10042C7B2 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +201,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		0F2756AA2CD3BA1D0045BBFE /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				0F2756AB2CD3BA380045BBFE /* LanguageManager.swift */,
+				0F2756AD2CD3BB360045BBFE /* Localizable.xcstrings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		0F838FD52CC8F6410028D301 /* Article */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +234,7 @@
 				31F988A32CC55879008B4517 /* ProfileViewController.swift */,
 				0F8390632CCFD7460028D301 /* TermsAndConditionsVC.swift */,
 				0F8390652CCFD74A0028D301 /* LanguageVC.swift */,
+				0F2756AA2CD3BA1D0045BBFE /* Localizable */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -227,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				0FB9460E2CD11D9400547AA2 /* ConstantAppString.swift */,
+				0F76BF072CD407BD00F84CB3 /* LaunchScreen.storyboard */,
 				0F054F892CD2E22100C3E1AC /* Assets.xcassets */,
 				0F054F872CD2E18E00C3E1AC /* Constants.swift */,
 				7965307B2CCE8EF000FF3C5B /* CategoriesSetting.swift */,
@@ -254,16 +271,16 @@
 		31F988842CC554D4008B4517 /* NewsToDayApp */ = {
 			isa = PBXGroup;
 			children = (
+				31F988A52CC55949008B4517 /* Service */,
 				0F11F43D2CD24D4A009DD9B7 /* Managers */,
 				0F11F4062CCEB63B009DD9B7 /* Extensions */,
 				CEB31F582CC6A6BD00564766 /* CustomView */,
 				CEB31F482CC6A30A00564766 /* NetworkManager */,
-				31F988A52CC55949008B4517 /* Service */,
 				31F988A62CC5595D008B4517 /* Controllers */,
 				0FB9460D2CD11D7700547AA2 /* Resources */,
 				0F8390442CC97EE80028D301 /* Models */,
 				CEB31F4B2CC6A33E00564766 /* Model.swift */,
-				0F2756A82CD2E8450045BBFE /* GoogleService-Info.plist */,
+				0F76BF1C2CD7421700F84CB3 /* GoogleService-Info.plist */,
 				31F988932CC554D8008B4517 /* Info.plist */,
 				0F8390422CC95C500028D301 /* Config.plist */,
 			);
@@ -354,8 +371,6 @@
 			name = NewsToDayApp;
 			packageProductDependencies = (
 				310DF37C2CD68A3F00AF642B /* Kingfisher */,
-				310DF37F2CD68A4600AF642B /* Alamofire */,
-				310DF3812CD68A4600AF642B /* AlamofireDynamic */,
 				310DF38E2CD68DC200AF642B /* FirebaseAnalytics */,
 				310DF3902CD68DC200AF642B /* FirebaseAnalyticsOnDeviceConversion */,
 				310DF3922CD68DC200AF642B /* FirebaseAnalyticsWithoutAdIdSupport */,
@@ -380,6 +395,7 @@
 				310DF3B82CD68DC200AF642B /* FirebaseStorage */,
 				310DF3BA2CD68DC200AF642B /* FirebaseStorageCombine-Community */,
 				310DF3BC2CD68DC200AF642B /* FirebaseVertexAI */,
+				0FD2738D2CE3E6E10042C7B2 /* Alamofire */,
 			);
 			productName = NewsToDayApp;
 			productReference = 31F988822CC554D4008B4517 /* NewsToDayApp.app */;
@@ -406,13 +422,14 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 				Base,
 			);
 			mainGroup = 31F988792CC554D4008B4517;
 			packageReferences = (
 				310DF37B2CD68A3F00AF642B /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				310DF37E2CD68A4600AF642B /* XCRemoteSwiftPackageReference "Alamofire" */,
 				310DF38D2CD68DC200AF642B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0FD2738C2CE3E6E10042C7B2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 31F988832CC554D4008B4517 /* Products */;
 			projectDirPath = "";
@@ -429,7 +446,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F8390432CC95C500028D301 /* Config.plist in Resources */,
-				0F2756A92CD2E8450045BBFE /* GoogleService-Info.plist in Resources */,
+				0F2756AE2CD3BB360045BBFE /* Localizable.xcstrings in Resources */,
+				0F76BF1D2CD7421700F84CB3 /* GoogleService-Info.plist in Resources */,
+				0F76BF0C2CD407BD00F84CB3 /* LaunchScreen.storyboard in Resources */,
 				0F054F8A2CD2E22100C3E1AC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +495,7 @@
 				0F11F4192CD1179A009DD9B7 /* LoginViewController.swift in Sources */,
 				0F11F41A2CD1179A009DD9B7 /* RegistrationViewController.swift in Sources */,
 				0F11F4132CD108A4009DD9B7 /* OnboardingVewCell.swift in Sources */,
+				0F2756AC2CD3BA3D0045BBFE /* LanguageManager.swift in Sources */,
 				31F988A42CC55879008B4517 /* ProfileViewController.swift in Sources */,
 				31F988A02CC5585E008B4517 /* CategoriesViewController.swift in Sources */,
 				31F9889A2CC5580C008B4517 /* OnboardingViewController.swift in Sources */,
@@ -485,6 +505,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0F76BF072CD407BD00F84CB3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F76BF062CD407BD00F84CB3 /* Base */,
+				0F76BF0F2CD4085600F84CB3 /* en */,
+				0F76BF112CD4088C00F84CB3 /* ru */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		31F988942CC554D8008B4517 /* Debug */ = {
@@ -546,6 +579,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -602,6 +636,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -613,7 +648,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72WF57A54C;
+				DEVELOPMENT_TEAM = GNG4B9AY27;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewsToDayApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -645,7 +680,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72WF57A54C;
+				DEVELOPMENT_TEAM = GNG4B9AY27;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewsToDayApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -694,20 +729,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0FD2738C2CE3E6E10042C7B2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
 		310DF37B2CD68A3F00AF642B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 8.1.0;
-			};
-		};
-		310DF37E2CD68A4600AF642B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.10.1;
 			};
 		};
 		310DF38D2CD68DC200AF642B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -721,20 +756,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0FD2738D2CE3E6E10042C7B2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FD2738C2CE3E6E10042C7B2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		310DF37C2CD68A3F00AF642B /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 310DF37B2CD68A3F00AF642B /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		310DF37F2CD68A4600AF642B /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 310DF37E2CD68A4600AF642B /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		310DF3812CD68A4600AF642B /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 310DF37E2CD68A4600AF642B /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
 		};
 		310DF38E2CD68DC200AF642B /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
