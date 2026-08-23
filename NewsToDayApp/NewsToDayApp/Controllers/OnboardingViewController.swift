@@ -16,7 +16,7 @@ final class OnboardingViewController: UIViewController {
         didSet {
             let isLastPage = models.count - 1 > selectedIndex
             nextButton.setTitle(
-                isLastPage ? K.Onboarding.titleNext : K.Onboarding.titleGetStarted,
+                isLastPage ? K.Onboarding.titleNext.localized() : K.Onboarding.titleGetStarted.localized(),
                 for: .normal
             )
         }
@@ -107,15 +107,6 @@ final class OnboardingViewController: UIViewController {
         setupHierarchy()
         setupLayout()
         updateLabels(for: selectedIndex)
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        setupView()
-//        setupHierarchy()
-//        setupLayout()
-//        updateLabels(for: selectedIndex)
     }
 
     // MARK: - Setups

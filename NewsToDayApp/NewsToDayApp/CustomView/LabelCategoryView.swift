@@ -17,7 +17,7 @@ final class LabelCategoryView: UIView {
     private var collectionView: UICollectionView!
     weak var delegate: LabelCategoryViewProtocol?
     
-    private let categoryNames = ["General", "Business", "Entertainment", "Health", "Science", "Technology", "Sports"]
+    private let categoryNames = ["General".localized(), "Business".localized(), "Entertainment".localized(), "Health".localized(), "Science".localized(), "Technology".localized(), "Sports".localized()]
     
     override init(frame: CGRect) {
         super.init(frame: frame)

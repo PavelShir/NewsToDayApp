@@ -229,6 +229,18 @@
         }
       }
     },
+    "Business" : {
+      "comment" : "Business",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бизнес "
+          }
+        }
+      }
+    },
     "Categories" : {
       "comment" : "Categories",
       "extractionState" : "manual",
@@ -289,6 +301,18 @@
         }
       }
     },
+    "Entertainment" : {
+      "comment" : "Entertainment",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Развлечение"
+          }
+        }
+      }
+    },
     "Error" : {
       "comment" : "Error",
       "extractionState" : "manual",
@@ -313,6 +337,18 @@
         }
       }
     },
+    "General" : {
+      "comment" : "General",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Общий"
+          }
+        }
+      }
+    },
     "Get Started" : {
       "comment" : "Get Started",
       "extractionState" : "manual",
@@ -321,6 +357,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Начать"
+          }
+        }
+      }
+    },
+    "Health" : {
+      "comment" : "Health",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Здоровье"
           }
         }
       }
@@ -481,6 +529,18 @@
         }
       }
     },
+    "Science" : {
+      "comment" : "Science",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наука"
+          }
+        }
+      }
+    },
     "Search" : {
       "comment" : "Search",
       "extractionState" : "manual",
@@ -541,6 +601,18 @@
         }
       }
     },
+    "Sports" : {
+      "comment" : "Sports",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спорт"
+          }
+        }
+      }
+    },
     "Success" : {
       "comment" : "Success",
       "extractionState" : "manual",
@@ -549,6 +621,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Успех"
+          }
+        }
+      }
+    },
+    "Technology" : {
+      "comment" : "Technology",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Технология"
           }
         }
       }
